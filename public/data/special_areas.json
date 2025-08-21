@@ -1,0 +1,50 @@
+[
+  {
+    "id": "food_stalls",
+    "name": "Food Stalls",
+    "location": "C Plaza",
+    "description": "Delicious food and refreshments for visitors",
+    "icon": "utensils",
+    "facilities": ["Snacks", "Beverages", "Local Cuisine", "Seating Area"]
+  },
+  {
+    "id": "sports",
+    "name": "Sports Activities",
+    "location": "Basement",
+    "description": "Sports activities and demonstrations",
+    "icon": "activity",
+    "facilities": ["Indoor Games", "Demonstrations", "Sports Equipment Display"]
+  },
+  {
+    "id": "music_tribute",
+    "name": "Music Tribute",
+    "location": "Block A Ground Floor",
+    "description": "Tribute to Bhupen Hazarika musical performance",
+    "icon": "music",
+    "facilities": ["Live Performance", "Audio System", "Seating Arrangement"]
+  },
+  {
+    "id": "junior_art",
+    "name": "Junior School Art Display",
+    "location": "Block A",
+    "description": "Art exhibition for junior school students",
+    "icon": "palette",
+    "facilities": ["Art Displays", "Interactive Activities", "Creative Workshops"]
+  },
+  {
+    "id": "parking",
+    "name": "Parking Area",
+    "location": "School Premises",
+    "description": "Vehicle parking for visitors",
+    "icon": "car",
+    "facilities": ["Two Wheeler Parking", "Four Wheeler Parking", "Security"]
+  },
+  {
+    "id": "information_desk",
+    "name": "Information Desk",
+    "location": "Main Entrance",
+    "description": "Information and assistance for visitors",
+    "icon": "info",
+    "facilities": ["Maps", "Schedules", "Assistance", "Lost & Found"]
+  }
+]

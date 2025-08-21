@@ -1,0 +1,230 @@
+[
+  {
+    "id": "english",
+    "name": "English",
+    "teacher": "Ms. Rumi Bora",
+    "room": "2C",
+    "floor": "A Block 1st Floor",
+    "classes": "6-12",
+    "activities": [
+      "Slam Poetry Performance",
+      "Interactive Spinner Activity",
+      "Poetry Reading",
+      "Literary Games"
+    ],
+    "equipment": ["Platform for performers", "Chairs", "Spinner (cardboard)", "Speaker/Microphone"],
+    "qr": "english",
+    "theme": "Literature & Expression",
+    "description": "Experience the beauty of English literature through interactive performances and engaging activities."
+  },
+  {
+    "id": "french",
+    "name": "French",
+    "teacher": "Mr. Debapratim Bharali",
+    "room": "French Room",
+    "floor": "B Block Ground Floor",
+    "classes": "6-12",
+    "activities": [
+      "Museum of Louvre Display",
+      "French Food Preparation",
+      "Cultural Exhibition",
+      "French Language Games"
+    ],
+    "equipment": ["Plywood boards", "Chart paper", "Drawing colours", "Food ingredients"],
+    "qr": "french",
+    "theme": "French Culture & Cuisine",
+    "description": "Immerse yourself in French culture through art, food, and interactive cultural displays."
+  },
+  {
+    "id": "hindi",
+    "name": "Hindi & Sanskrit",
+    "teacher": "Ms. Geetanjali Goswami",
+    "room": "Maths Lab",
+    "floor": "A Block 1st Floor",
+    "classes": "6-10",
+    "activities": [
+      "Saraswati Vandana & Geeta Stotra",
+      "Hindi Language Speech",
+      "Calligraphy Display",
+      "Poetry Recitation",
+      "Street Play (Nukkad Natak)",
+      "Sanskrit Subhashitas"
+    ],
+    "qr": "hindi",
+    "theme": "Indian Languages & Heritage",
+    "description": "Celebrate the richness of Hindi and Sanskrit through poetry, drama, and cultural performances."
+  },
+  {
+    "id": "maths",
+    "name": "Mathematics",
+    "teacher": "Mr. Subroto Goswami",
+    "room": "1B, 8A, 7C, 7A",
+    "floor": "Multiple Floors",
+    "classes": "6-12",
+    "activities": [
+      "Interactive Mathematical Models",
+      "Problem Solving Stations",
+      "Mathematical Art Displays",
+      "Geometry Demonstrations"
+    ],
+    "budget": "₹10,000",
+    "qr": "maths",
+    "theme": "Mathematical Wonders",
+    "description": "Discover the beauty of mathematics through interactive models and problem-solving challenges."
+  },
+  {
+    "id": "art",
+    "name": "Fine Arts",
+    "teacher": "Mr. Nabajyoti Phukan",
+    "room": "Block C",
+    "floor": "Block C",
+    "classes": "All",
+    "activities": [
+      "Welcome Gate (A Block Front)",
+      "Artificial Forest (Reception)",
+      "Desert Scene with Train",
+      "Robot Planting Tree Installation",
+      "Central Desert & Forest Installation"
+    ],
+    "qr": "art",
+    "theme": "Creative Expressions",
+    "description": "Explore artistic creativity through stunning installations and visual art displays."
+  },
+  {
+    "id": "science_9_12",
+    "name": "Science (9-12)",
+    "teacher": "Dr. Utpal Saha",
+    "room": "8C, Language Room, 8B",
+    "floor": "B Block 1st Floor",
+    "classes": "9-12",
+    "activities": [
+      "Pedal Power – Bicycle Generator",
+      "Newton's Cradle Display",
+      "Wind Turbine Generator",
+      "Piezoelectricity Applications",
+      "Mars Exploration Diorama",
+      "International Space Station Model",
+      "Artificial Photosynthesis Setup"
+    ],
+    "budget": "₹5,350",
+    "qr": "science12",
+    "theme": "Scientific Innovations",
+    "description": "Experience cutting-edge science through hands-on demonstrations and interactive experiments."
+  },
+  {
+    "id": "social_science_9_10",
+    "name": "Social Science (9-10)",
+    "teacher": "Social Science Department",
+    "room": "6C",
+    "floor": "B Block 1st Floor",
+    "classes": "9-10",
+    "theme": "Ahom Dynasty",
+    "activities": [
+      "Charaideo Models",
+      "Rang Ghar Structure",
+      "Kareng Ghar Display",
+      "Saraighat Bridge Model",
+      "Geographical Extent Maps"
+    ],
+    "budget": "₹18,500",
+    "qr": "social910",
+    "description": "Journey through Assam's rich history with the mighty Ahom Dynasty."
+  },
+  {
+    "id": "social_science_6_8",
+    "name": "Social Science (6-8)",
+    "teacher": "Social Science Department",
+    "room": "2A",
+    "floor": "A Block 1st Floor",
+    "classes": "6-8",
+    "theme": "India - Echoes of Time",
+    "activities": [
+      "Earth's Formation Timeline",
+      "Evolution & Early Humans",
+      "Stone Tools & Habitation",
+      "First Tools Evolution",
+      "Fossil Corner Display"
+    ],
+    "budget": "₹11,260",
+    "qr": "social68",
+    "description": "Explore India's ancient history from prehistoric times to early civilizations."
+  },
+  {
+    "id": "social_science_11_12",
+    "name": "Social Science (11-12)",
+    "teacher": "Social Science Department",
+    "room": "7B, 6A, 6B",
+    "floor": "B Block 1st Floor",
+    "classes": "11-12",
+    "theme": "Partition of India",
+    "activities": [
+      "1947 India Partition Display",
+      "Princely States Integration",
+      "Migration & Refugee Movement",
+      "Partition Newspapers Display",
+      "Psychology of Partition"
+    ],
+    "budget": "₹25,000",
+    "qr": "social1112",
+    "description": "Understand the complex history of India's partition and its lasting impact."
+  },
+  {
+    "id": "stem_ai",
+    "name": "STEM & AI",
+    "teacher": "Nabojyoti Gupta",
+    "room": "B Block Reception",
+    "floor": "B Block Ground Floor",
+    "classes": "6-12",
+    "activities": [
+      "Student Performance AI Dashboard",
+      "AI Hedge Fund Simulator",
+      "Interview-AI Avatar",
+      "FitMind Wellness Companion",
+      "Audio Anomaly Detection",
+      "Vision-Driven Robots",
+      "Talking Tree Interactive"
+    ],
+    "budget": "₹40,000",
+    "qr": "ai",
+    "theme": "Future Technology",
+    "description": "Discover the future with cutting-edge AI and STEM innovations."
+  },
+  {
+    "id": "commerce",
+    "name": "Commerce",
+    "teacher": "BalaMeenakshi Rajkhowa",
+    "room": "6A, 6B",
+    "floor": "B Block 1st Floor",
+    "classes": "11-12",
+    "activities": [
+      "Rent the Trend - Sustainable Fashion",
+      "Plastic Bank - Recycle for Rewards",
+      "Stock Market Simulator",
+      "Bake & Earn - Sweet Entrepreneurship",
+      "The Price is Right - Consumer Game",
+      "Brand Mania Quiz Zone"
+    ],
+    "budget": "₹15,000",
+    "qr": "commerce",
+    "theme": "Business & Entrepreneurship",
+    "description": "Learn business concepts through interactive games and real-world simulations."
+  },
+  {
+    "id": "computer_science",
+    "name": "Computer Science",
+    "teacher": "Dr. Krishna Maan",
+    "room": "3D Lab, 8D",
+    "floor": "B Block 1st Floor",
+    "classes": "9-12",
+    "activities": [
+      "Interactive Computer Lab",
+      "Programming Demonstrations",
+      "Technology Showcase",
+      "Coding Challenges"
+    ],
+    "budget": "₹42,000",
+    "qr": "cs",
+    "theme": "Digital Innovation",
+    "description": "Explore the world of programming and computer science through hands-on activities."
+  }
+]

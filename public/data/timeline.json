@@ -1,0 +1,110 @@
+[
+  {
+    "time": "09:30",
+    "event": "Exhibition Opening",
+    "location": "Main Entrance",
+    "type": "ceremony",
+    "description": "Welcome to Triveni - The School Exhibition"
+  },
+  {
+    "time": "09:45",
+    "event": "Inauguration Ceremony",
+    "location": "Block A Reception",
+    "departmentId": "art",
+    "type": "ceremony",
+    "description": "Official opening with ribbon cutting"
+  },
+  {
+    "time": "10:00",
+    "event": "English Poetry Performance",
+    "location": "2C",
+    "departmentId": "english",
+    "type": "performance",
+    "description": "Slam poetry and interactive spinner activities"
+  },
+  {
+    "time": "10:30",
+    "event": "STEM & AI Demonstrations",
+    "location": "B Block Reception",
+    "departmentId": "stem_ai",
+    "type": "demonstration",
+    "description": "Live AI and robotics demonstrations"
+  },
+  {
+    "time": "11:00",
+    "event": "French Cultural Exhibition",
+    "location": "French Room",
+    "departmentId": "french",
+    "type": "exhibition",
+    "description": "Museum of Louvre display and French cuisine"
+  },
+  {
+    "time": "11:30",
+    "event": "Science Experiments Show",
+    "location": "8C, Language Room, 8B",
+    "departmentId": "science_9_12",
+    "type": "demonstration",
+    "description": "Interactive science experiments and demonstrations"
+  },
+  {
+    "time": "12:00",
+    "event": "Hindi & Sanskrit Performances",
+    "location": "Maths Lab",
+    "departmentId": "hindi",
+    "type": "performance",
+    "description": "Saraswati Vandana and cultural performances"
+  },
+  {
+    "time": "12:30",
+    "event": "Lunch Break",
+    "location": "C Plaza",
+    "type": "break",
+    "description": "Food stalls and refreshments"
+  },
+  {
+    "time": "13:30",
+    "event": "Commerce Business Games",
+    "location": "6A, 6B",
+    "departmentId": "commerce",
+    "type": "activity",
+    "description": "Interactive business simulations and games"
+  },
+  {
+    "time": "14:00",
+    "event": "Social Science Displays",
+    "location": "Multiple Rooms",
+    "departmentId": "social_science_9_10",
+    "type": "exhibition",
+    "description": "Historical displays and interactive models"
+  },
+  {
+    "time": "14:30",
+    "event": "Mathematics Problem Solving",
+    "location": "1B, 8A, 7C, 7A",
+    "departmentId": "maths",
+    "type": "activity",
+    "description": "Interactive mathematical challenges"
+  },
+  {
+    "time": "15:00",
+    "event": "Computer Science Workshop",
+    "location": "3D Lab, 8D",
+    "departmentId": "computer_science",
+    "type": "workshop",
+    "description": "Programming demonstrations and coding challenges"
+  },
+  {
+    "time": "15:30",
+    "event": "Bhupen Hazarika Tribute",
+    "location": "Block A Ground Floor",
+    "type": "performance",
+    "description": "Musical tribute to the legendary artist"
+  },
+  {
+    "time": "16:00",
+    "event": "Closing Ceremony",
+    "location": "Main Hall",
+    "type": "ceremony",
+    "description": "Thank you and closing remarks"
+  }
+]
