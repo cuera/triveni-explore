@@ -5,36 +5,21 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import Navigation from "@/components/navigation";
 import DepartmentCard from "@/components/department-card";
+import { Department } from "@/types";
 import { Search, Filter, Users, MapPin, Clock } from "lucide-react";
-
-interface Department {
-  id: string;
-  name: string;
-  teacher?: string;
-  room: string;
-  floor: string;
-  classes: string;
-  theme?: string;
-  activities: string[];
-  description?: string;
-  budget?: string;
-}
+import { useNavigate } from "react-router-dom";
+import deptsData from "@/data/departments.json";
 
 const Departments = () => {
+  const navigate = useNavigate();
   const [departments, setDepartments] = useState<Department[]>([]);
   const [filteredDepartments, setFilteredDepartments] = useState<Department[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("all");
-  const [currentPath, setCurrentPath] = useState("/departments");
 
   useEffect(() => {
-    fetch('/data/departments.json')
-      .then(res => res.json())
-      .then(data => {
-        setDepartments(data);
-        setFilteredDepartments(data);
-      })
-      .catch(err => console.error('Failed to load departments:', err));
+    setDepartments(deptsData as unknown as Department[]);
+    setFilteredDepartments(deptsData as unknown as Department[]);
   }, []);
 
   useEffect(() => {
@@ -46,8 +31,7 @@ const Departments = () => {
         dept.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         dept.teacher?.toLowerCase().includes(searchQuery.toLowerCase()) ||
         dept.room.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        dept.theme?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        dept.activities.some(activity => 
+        dept.activities?.some(activity => 
           activity.toLowerCase().includes(searchQuery.toLowerCase())
         )
       );
@@ -58,15 +42,15 @@ const Departments = () => {
       filtered = filtered.filter(dept => {
         switch (selectedFilter) {
           case "languages":
-            return ["english", "french", "hindi"].includes(dept.id);
+            return ["english-6-12", "french"].includes(dept.id);
           case "science":
-            return dept.id.includes("science") || dept.id === "stem_ai";
+            return dept.id.includes("science") || dept.id === "ai";
           case "social":
-            return dept.id.includes("social_science");
+            return dept.id.includes("social") || dept.id.includes("ss");
           case "arts":
-            return dept.id === "art" || dept.id === "english";
+            return dept.id === "art";
           case "commerce":
-            return dept.id === "commerce" || dept.id === "computer_science";
+            return dept.id === "commerce" || dept.id === "computers-6-12";
           default:
             return true;
         }
@@ -77,42 +61,25 @@ const Departments = () => {
   }, [searchQuery, selectedFilter, departments]);
 
   const handleNavigate = (path: string) => {
-    setCurrentPath(path);
+    navigate(path);
   };
 
   const handleDepartmentClick = (id: string) => {
-    setCurrentPath(`/departments/${id}`);
+    navigate(`/departments/${id}`);
   };
 
   const filters = [
     { id: "all", label: "All Departments", count: departments.length },
-    { id: "languages", label: "Languages", count: departments.filter(d => ["english", "french", "hindi"].includes(d.id)).length },
-    { id: "science", label: "Science & Tech", count: departments.filter(d => d.id.includes("science") || d.id === "stem_ai").length },
-    { id: "social", label: "Social Studies", count: departments.filter(d => d.id.includes("social_science")).length },
-    { id: "arts", label: "Arts & Culture", count: departments.filter(d => d.id === "art" || d.id === "english").length },
-    { id: "commerce", label: "Commerce & CS", count: departments.filter(d => d.id === "commerce" || d.id === "computer_science").length }
+    { id: "languages", label: "Languages", count: departments.filter(d => ["english-6-12", "french"].includes(d.id)).length },
+    { id: "science", label: "Science & Tech", count: departments.filter(d => d.id.includes("science") || d.id === "ai").length },
+    { id: "social", label: "Social Studies", count: departments.filter(d => d.id.includes("social") || d.id.includes("ss")).length },
+    { id: "arts", label: "Arts & Culture", count: departments.filter(d => d.id === "art").length },
+    { id: "commerce", label: "Commerce & CS", count: departments.filter(d => d.id === "commerce" || d.id === "computers-6-12").length }
   ];
-
-  if (currentPath !== "/departments") {
-    return (
-      <div className="min-h-screen bg-background">
-        <Navigation currentPath={currentPath} onNavigate={handleNavigate} />
-        <div className="container mx-auto px-4 py-8">
-          <p className="text-center text-muted-foreground">
-            Navigate to: {currentPath}
-            <br />
-            <Button variant="outline" onClick={() => setCurrentPath("/departments")}>
-              Back to Departments
-            </Button>
-          </p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation currentPath={currentPath} onNavigate={handleNavigate} />
+      <Navigation currentPath="/departments" onNavigate={handleNavigate} />
       
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
@@ -193,54 +160,6 @@ const Departments = () => {
             </Button>
           </div>
         )}
-
-        {/* Statistics Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-          <Card className="card-gradient">
-            <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <Users className="w-5 h-5 text-primary" />
-                Teachers
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-primary">
-                {new Set(departments.map(d => d.teacher).filter(Boolean)).size}
-              </div>
-              <p className="text-sm text-muted-foreground">Expert educators</p>
-            </CardContent>
-          </Card>
-
-          <Card className="card-gradient">
-            <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <MapPin className="w-5 h-5 text-accent" />
-                Locations
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-accent">
-                {new Set(departments.map(d => d.floor)).size}
-              </div>
-              <p className="text-sm text-muted-foreground">Floors & blocks</p>
-            </CardContent>
-          </Card>
-
-          <Card className="card-gradient">
-            <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <Clock className="w-5 h-5 text-success" />
-                Activities
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-success">
-                {departments.reduce((total, dept) => total + dept.activities.length, 0)}
-              </div>
-              <p className="text-sm text-muted-foreground">Total experiences</p>
-            </CardContent>
-          </Card>
-        </div>
       </div>
     </div>
   );

@@ -1,0 +1,61 @@
+[
+  { "id": "ai", "name": "STEM & AI", "classes": "6-12", "room": "B Block Reception", "block": "B Block", "floor": "Ground", "activities": [
+    "Student Performance AI Dashboard",
+    "AI Hedge Fund Simulator",
+    "Interview-AI Avatar",
+    "FitMind – Wellness Companion",
+    "Audio Anomaly Detection",
+    "Vision-Driven Robots",
+    "Talking Tree Interactive"
+  ]},
+  { "id": "french", "name": "French", "classes": "6-12", "room": "French Room", "block": "B Block", "floor": "Ground", "activities": [
+    "Museum of Louvre Display",
+    "French Food Preparation",
+    "Cultural Exhibition",
+    "French Language Games"
+  ]},
+  { "id": "english-6-12", "name": "English", "classes": "6-12", "room": "2C", "block": "A Block", "floor": "1st", "activities": [
+    "Slam Poetry Performance",
+    "Interactive Spinner Activity",
+    "Poetry Reading",
+    "Literary Games"
+  ]},
+  { "id": "science-11-12", "name": "Science (11–12)", "classes": "11-12", "room": "8C, Language Room, 8B", "block": "B Block", "floor": "1st", "activities": [
+    "Pedal Power – Bicycle Generator",
+    "Newton's Cradle Display",
+    "Wind Turbine Generator",
+    "Piezoelectricity Applications",
+    "Mars Exploration Diorama",
+    "International Space Station Model",
+    "Artificial Photosynthesis"
+  ]},
+  { "id": "commerce", "name": "Commerce", "classes": "11-12", "room": "6A, 6B", "block": "B Block", "floor": "1st", "activities": [
+    "Rent the Trend – Sustainable Fashion",
+    "Plastic Bank – Recycle for Rewards",
+    "Stock Market Simulator",
+    "Bake & Earn – Sweet Entrepreneurship",
+    "The Price is Right – Consumer Game",
+    "Brand Mania Quiz Zone"
+  ]},
+  { "id": "computers-6-12", "name": "Computers", "classes": "6-12", "room": "3D Lab, 8D", "block": "B Block", "floor": "1st", "activities": [
+    "Interactive Computer Lab",
+    "Programming Demonstrations",
+    "Coding Challenges"
+  ]},
+  { "id": "hindi-sanskrit", "name": "Hindi & Sanskrit", "classes": "6-10", "room": "Maths Lab", "block": "A Block", "floor": "1st", "activities": [
+    "Saraswati Vandana",
+    "Hindi Speech",
+    "Calligraphy Display",
+    "Poetry Recitation",
+    "Street Play (Nukkad Natak)",
+    "Sanskrit Subhashitas"
+  ]},
+  { "id": "ss-9-10", "name": "Social Science (9–10)", "classes": "9-10", "room": "6C", "block": "B Block", "floor": "1st", "activities": [
+    "Charaideo Models",
+    "Rang Ghar Structure",
+    "Kareng Ghar Display",
+    "Saraighat Bridge Model",
+    "Geographical Extent Maps"
+  ]}
+]
+

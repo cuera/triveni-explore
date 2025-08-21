@@ -4,20 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Navigation from "@/components/navigation";
 import TimelineItem from "@/components/timeline-item";
+import { TimelineItem as TimelineItemType } from "@/types";
 import { Clock, Calendar, MapPin, Filter, RefreshCw } from "lucide-react";
 
-interface TimelineEvent {
-  time: string;
-  event: string;
-  location: string;
-  type: 'ceremony' | 'performance' | 'demonstration' | 'exhibition' | 'activity' | 'workshop' | 'break';
-  description?: string;
-  departmentId?: string;
-}
-
 const Timeline = () => {
-  const [timeline, setTimeline] = useState<TimelineEvent[]>([]);
-  const [filteredTimeline, setFilteredTimeline] = useState<TimelineEvent[]>([]);
+  const [timeline, setTimeline] = useState<TimelineItemType[]>([]);
+  const [filteredTimeline, setFilteredTimeline] = useState<TimelineItemType[]>([]);
   const [currentTime, setCurrentTime] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("all");
   const [currentPath, setCurrentPath] = useState("/timeline");
@@ -73,19 +65,19 @@ const Timeline = () => {
     setCurrentPath(path);
   };
 
-  const handleTimelineClick = (event: TimelineEvent) => {
+  const handleTimelineClick = (event: TimelineItemType) => {
     if (event.departmentId) {
       setCurrentPath(`/departments/${event.departmentId}`);
     }
   };
 
-  const isEventActive = (event: TimelineEvent) => {
+  const isEventActive = (event: TimelineItemType) => {
     const eventIndex = timeline.indexOf(event);
     const nextEvent = timeline[eventIndex + 1];
     return event.time <= currentTime && (!nextEvent || nextEvent.time > currentTime);
   };
 
-  const isEventPast = (event: TimelineEvent) => {
+  const isEventPast = (event: TimelineItemType) => {
     const eventIndex = timeline.indexOf(event);
     const nextEvent = timeline[eventIndex + 1];
     return nextEvent && nextEvent.time <= currentTime;

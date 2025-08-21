@@ -1,0 +1,101 @@
+[
+  {
+    "code": "B Block Reception",
+    "block": "B Block",
+    "floor": "Ground",
+    "note": "Main reception area for B Block",
+    "hotspot": { "x": 0.3, "y": 0.4 }
+  },
+  {
+    "code": "French Room",
+    "block": "B Block",
+    "floor": "Ground",
+    "note": "Dedicated French language classroom",
+    "hotspot": { "x": 0.2, "y": 0.6 }
+  },
+  {
+    "code": "8C",
+    "block": "B Block",
+    "floor": "1st",
+    "note": "Science classroom",
+    "hotspot": { "x": 0.4, "y": 0.3 }
+  },
+  {
+    "code": "Language Room",
+    "block": "B Block",
+    "floor": "1st",
+    "note": "Multi-purpose language classroom",
+    "hotspot": { "x": 0.5, "y": 0.4 }
+  },
+  {
+    "code": "8B",
+    "block": "B Block",
+    "floor": "1st",
+    "note": "Science laboratory",
+    "hotspot": { "x": 0.6, "y": 0.3 }
+  },
+  {
+    "code": "6A",
+    "block": "A Block",
+    "floor": "Ground",
+    "note": "English classroom",
+    "hotspot": { "x": 0.7, "y": 0.5 }
+  },
+  {
+    "code": "6B",
+    "block": "A Block",
+    "floor": "Ground",
+    "note": "Social Science classroom",
+    "hotspot": { "x": 0.8, "y": 0.5 }
+  },
+  {
+    "code": "Maths Lab",
+    "block": "A Block",
+    "floor": "1st",
+    "note": "Mathematics laboratory",
+    "hotspot": { "x": 0.2, "y": 0.2 }
+  },
+  {
+    "code": "2C",
+    "block": "A Block",
+    "floor": "1st",
+    "note": "English classroom",
+    "hotspot": { "x": 0.3, "y": 0.2 }
+  },
+  {
+    "code": "2A",
+    "block": "A Block",
+    "floor": "1st",
+    "note": "Social Science classroom",
+    "hotspot": { "x": 0.4, "y": 0.2 }
+  },
+  {
+    "code": "7B",
+    "block": "B Block",
+    "floor": "1st",
+    "note": "Social Science classroom",
+    "hotspot": { "x": 0.7, "y": 0.3 }
+  },
+  {
+    "code": "3D Lab",
+    "block": "B Block",
+    "floor": "1st",
+    "note": "Computer Science laboratory",
+    "hotspot": { "x": 0.1, "y": 0.7 }
+  },
+  {
+    "code": "8D",
+    "block": "B Block",
+    "floor": "1st",
+    "note": "Computer classroom",
+    "hotspot": { "x": 0.2, "y": 0.7 }
+  },
+  {
+    "code": "Block C",
+    "block": "C Block",
+    "floor": "Ground",
+    "note": "Art and creative spaces",
+    "hotspot": { "x": 0.5, "y": 0.8 }
+  }
+]
+

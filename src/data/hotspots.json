@@ -1,0 +1,10 @@
+[
+  { "id": "ai", "label": "STEM & AI (Lounge)", "deptId": "ai", "room": "B Block Reception", "block": "B Block", "floor": "ground", "x": 0.33, "y": 0.20 },
+  { "id": "french", "label": "French Room", "deptId": "french", "room": "French Room", "block": "B Block", "floor": "ground", "x": 0.18, "y": 0.55 },
+  { "id": "grade3-5-sci", "label": "Grade III–V Science", "deptId": null, "room": "Grade III–V Science", "block": "A Block", "floor": "ground", "x": 0.74, "y": 0.64 },
+  { "id": "bhupen", "label": "Tribute to Bhupen Hazarika", "deptId": null, "room": "Performance Corner", "block": "A Block", "floor": "ground", "x": 0.91, "y": 0.62 },
+
+  { "id": "science12", "label": "Science (XI–XII)", "deptId": "science-11-12", "room": "8C / Lang Room / 8B", "block": "B Block", "floor": "first", "x": 0.62, "y": 0.35 },
+  { "id": "commerce", "label": "Commerce (6A/6B)", "deptId": "commerce", "room": "6A, 6B", "block": "B Block", "floor": "first", "x": 0.58, "y": 0.48 }
+]
+

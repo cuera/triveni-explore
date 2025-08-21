@@ -5,8 +5,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Departments from "./pages/Departments";
+import DepartmentDetail from "./pages/DepartmentDetail";
 import Timeline from "./pages/Timeline";
+import Map from "./pages/Map";
 import NotFound from "./pages/NotFound";
+import BottomNav from "./components/BottomNav";
 
 const queryClient = new QueryClient();
 
@@ -16,13 +19,18 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/departments" element={<Departments />} />
-          <Route path="/timeline" element={<Timeline />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <div className="pb-16 max-w-md mx-auto">
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/departments" element={<Departments />} />
+            <Route path="/departments/:id" element={<DepartmentDetail />} />
+            <Route path="/timeline" element={<Timeline />} />
+            <Route path="/map" element={<Map />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <BottomNav />
+        </div>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

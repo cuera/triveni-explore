@@ -1,0 +1,6 @@
+[
+  { "time": "09:45", "event": "Inauguration", "location": "Block A" },
+  { "time": "10:30", "event": "French Cultural Demo", "location": "French Room", "departmentId": "french" },
+  { "time": "11:15", "event": "STEM & AI Showcase", "location": "B Block Reception", "departmentId": "ai" }
+]
+

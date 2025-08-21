@@ -3,11 +3,12 @@ import { Search, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Department, Room } from "@/types";
 
 interface SearchResult {
   id: string;
   name: string;
-  type: 'department' | 'room' | 'activity';
+  type: 'department' | 'room';
   location?: string;
   teacher?: string;
 }
@@ -22,6 +23,30 @@ export default function SearchBox({ onSelect, placeholder = "Search departments,
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [departments, setDepartments] = useState<Department[]>([]);
+  const [rooms, setRooms] = useState<Room[]>([]);
+
+  // Load data on component mount
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [deptResponse, roomsResponse] = await Promise.all([
+          fetch('/data/departments.json'),
+          fetch('/data/rooms.json')
+        ]);
+        
+        const deptData: Department[] = await deptResponse.json();
+        const roomsData: Room[] = await roomsResponse.json();
+        
+        setDepartments(deptData);
+        setRooms(roomsData);
+      } catch (error) {
+        console.error('Failed to load search data:', error);
+      }
+    };
+
+    loadData();
+  }, []);
 
   useEffect(() => {
     if (query.length < 2) {
@@ -30,26 +55,54 @@ export default function SearchBox({ onSelect, placeholder = "Search departments,
       return;
     }
 
-    // Simulate search functionality - in real app, this would fetch from departments.json
-    const mockResults: SearchResult[] = [
-      { id: "english", name: "English", type: "department", location: "2C", teacher: "Ms. Rumi Bora" },
-      { id: "french", name: "French", type: "department", location: "French Room", teacher: "Mr. Debapratim Bharali" },
-      { id: "stem_ai", name: "STEM & AI", type: "department", location: "B Block Reception", teacher: "Nabojyoti Gupta" },
-      { id: "science_9_12", name: "Science (9-12)", type: "department", location: "8C, Language Room, 8B", teacher: "Dr. Utpal Saha" },
-      { id: "2c", name: "Room 2C", type: "room", location: "A Block 1st Floor" },
-      { id: "french_room", name: "French Room", type: "room", location: "B Block Ground Floor" },
-      { id: "slam_poetry", name: "Slam Poetry Performance", type: "activity", location: "2C" }
-    ];
+    const q = query.toLowerCase();
+    const searchResults: SearchResult[] = [];
 
-    const filtered = mockResults.filter(item =>
-      item.name.toLowerCase().includes(query.toLowerCase()) ||
-      item.location?.toLowerCase().includes(query.toLowerCase()) ||
-      item.teacher?.toLowerCase().includes(query.toLowerCase())
-    );
+    // Search departments
+    departments.forEach(dept => {
+      const searchableText = [
+        dept.name,
+        dept.room,
+        dept.classes,
+        dept.floor,
+        dept.teacher,
+        dept.theme,
+        ...(dept.activities || [])
+      ].join(' ').toLowerCase();
 
-    setResults(filtered);
-    setIsOpen(filtered.length > 0);
-  }, [query]);
+      if (searchableText.includes(q)) {
+        searchResults.push({
+          id: dept.id,
+          name: dept.name,
+          type: 'department',
+          location: dept.room,
+          teacher: dept.teacher
+        });
+      }
+    });
+
+    // Search rooms
+    rooms.forEach(room => {
+      const searchableText = [
+        room.code,
+        room.block,
+        room.floor,
+        room.note
+      ].join(' ').toLowerCase();
+
+      if (searchableText.includes(q)) {
+        searchResults.push({
+          id: room.code,
+          name: room.code,
+          type: 'room',
+          location: `${room.block} ${room.floor}`
+        });
+      }
+    });
+
+    setResults(searchResults);
+    setIsOpen(searchResults.length > 0);
+  }, [query, departments, rooms]);
 
   const handleSelect = (result: SearchResult) => {
     setQuery("");
@@ -104,8 +157,7 @@ export default function SearchBox({ onSelect, placeholder = "Search departments,
                 <span className={cn(
                   "text-xs px-2 py-1 rounded-full",
                   result.type === 'department' && "bg-primary/10 text-primary",
-                  result.type === 'room' && "bg-accent/10 text-accent",
-                  result.type === 'activity' && "bg-success/10 text-success"
+                  result.type === 'room' && "bg-accent/10 text-accent"
                 )}>
                   {result.type}
                 </span>
