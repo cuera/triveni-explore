@@ -1,3 +1,4 @@
+[
   {
     "id": "english",
     "name": "English",
@@ -11,14 +12,10 @@
       "Poetry Reading",
       "Literary Games"
     ],
+    "equipment": ["Platform for performers", "Chairs", "Spinner (cardboard)", "Speaker/Microphone"],
+    "qr": "english",
     "theme": "Literature & Expression",
-    "description": "Experience the beauty of English literature through interactive performances and engaging activities.",
-    "detailedActivities": [
-      "Slam poetry performance platform with microphone setup",
-      "Interactive spinner activity for literary engagement",
-      "Poetry recitations by students",
-      "Literary games and quizzes"
-    ]
+    "description": "Experience the beauty of English literature through interactive performances and engaging activities."
   },
   {
     "id": "french",
@@ -33,14 +30,10 @@
       "Cultural Exhibition",
       "French Language Games"
     ],
+    "equipment": ["Plywood boards", "Chart paper", "Drawing colours", "Food ingredients"],
+    "qr": "french",
     "theme": "French Culture & Cuisine",
-    "description": "Immerse yourself in French culture through art, food, and interactive cultural displays.",
-    "detailedActivities": [
-      "Louvre Museum replica display with famous artworks",
-      "French cultural exhibits showcasing traditions",
-      "French food tasting station with authentic cuisine",
-      "Interactive French language learning activities"
-    ]
+    "description": "Immerse yourself in French culture through art, food, and interactive cultural displays."
   },
   {
     "id": "hindi",
@@ -57,24 +50,9 @@
       "Street Play (Nukkad Natak)",
       "Sanskrit Subhashitas"
     ],
+    "qr": "hindi",
     "theme": "Indian Languages & Heritage",
-    "description": "Celebrate the richness of Hindi and Sanskrit through poetry, drama, and cultural performances.",
-    "detailedActivities": [
-      "Saraswati Vandana and Gita stotra recitations",
-      "Hindi speech competition and presentations",
-      "Beautiful handwriting display and calligraphy",
-      "Hindi quiz competition with prizes",
-      "Poetry recitations and comedy performances",
-      "Historical character monologues and solo acting",
-      "Idioms and proverbs exhibition with illustrations",
-      "Poets' illustrated introductions and biographies",
-      "Script evolution display (Brahmi, Kharoshthi, Devanagari)",
-      "Hindi dialects presentation across India",
-      "Sanskrit subhashitas and special verses",
-      "Street plays (Nukkad Natak) with social messages",
-      "Tulsidas or Meera bhajan performances",
-      "Royal Global poetry composition workshop"
-    ]
+    "description": "Celebrate the richness of Hindi and Sanskrit through poetry, drama, and cultural performances."
   },
   {
     "id": "maths",
@@ -129,18 +107,9 @@
       "Artificial Photosynthesis Setup"
     ],
     "budget": "₹5,350",
+    "qr": "science12",
     "theme": "Scientific Innovations",
-    "description": "Experience cutting-edge science through hands-on demonstrations and interactive experiments.",
-    "detailedActivities": [
-      "Pedal Power - Bicycle electricity generator demonstrating renewable energy",
-      "Newton's Cradle - Improved display version showing momentum conservation",
-      "Wind Turbine Generator - Functional model generating actual electricity",
-      "Piezoelectricity Application - Multiple sensors demonstration with interactive displays",
-      "Mars Exploration - Detailed diorama with lighting effects and rover models",
-      "International Space Station - Realistic model with working components",
-      "Artificial Photosynthesis - Working setup demonstrating energy conversion",
-      "Magnetic Train - Functional demonstration model using magnetic levitation"
-    ]
+    "description": "Experience cutting-edge science through hands-on demonstrations and interactive experiments."
   },
   {
     "id": "social_science_9_10",
@@ -216,18 +185,9 @@
       "Talking Tree Interactive"
     ],
     "budget": "₹40,000",
+    "qr": "ai",
     "theme": "Future Technology",
-    "description": "Discover the future with cutting-edge AI and STEM innovations.",
-    "detailedActivities": [
-      "Student Performance AI Dashboard - Real-time academic analytics and insights",
-      "AI Hedge Fund Simulator - Virtual investment platform with machine learning",
-      "Interview-AI Avatar - Interactive AI assistant for career guidance",
-      "FitMind Wellness Companion - Mental health and wellness AI chatbot",
-      "Audio Anomaly Detection Node - Sound pattern recognition system",
-      "Vision-Driven Robots - Computer vision robots with object recognition",
-      "Talking Tree Interactive Installation - Nature-themed AI conversation",
-      "AI Health Bot - Diabetic retinopathy detection using machine learning"
-    ]
+    "description": "Discover the future with cutting-edge AI and STEM innovations."
   },
   {
     "id": "commerce",
@@ -245,16 +205,9 @@
       "Brand Mania Quiz Zone"
     ],
     "budget": "₹15,000",
+    "qr": "commerce",
     "theme": "Business & Entrepreneurship",
-    "description": "Learn business concepts through interactive games and real-world simulations.",
-    "detailedActivities": [
-      "Rent the Trend - Sustainable fashion rental with mannequin displays and mirror booth, Best Styled Visitor contest",
-      "Plastic Bank - Plastic waste exchange for eco-rewards, seed pens and recycled bookmarks, plastic footprint calculator",
-      "Stock Market Simulator - Virtual investing experience with real-time market simulation, Investor of the Day awards",
-      "Bake & Earn - Cupcakes, cookies, and lemonade sales with Build Your Cupcake decorating activity",
-      "The Price is Right - Consumer goods pricing game with brand recognition activities and prize rewards",
-      "Educational Models - Supply chain visualization, stock market trends, waste-to-wealth transformation, circular economy cycle"
-    ]
+    "description": "Learn business concepts through interactive games and real-world simulations."
   },
   {
     "id": "computer_science",
@@ -270,17 +223,8 @@
       "Coding Challenges"
     ],
     "budget": "₹42,000",
+    "qr": "cs",
     "theme": "Digital Innovation",
-    "description": "Explore the world of programming and computer science through hands-on activities.",
-    "detailedActivities": [
-      "Interactive Computer Lab with hands-on programming sessions",
-      "Programming demonstrations showcasing various languages and frameworks",
-      "Technology showcase featuring latest developments in computing",
-      "Coding challenges and competitions for visitors",
-      "Black cloth backdrop installation with wooden framework",
-      "Smoke machine effects for dramatic presentation",
-      "Blinking LED lighting systems and audio speaker setup",
-      "Projector displays showing code in action"
-    ]
+    "description": "Explore the world of programming and computer science through hands-on activities."
   }
 ]
