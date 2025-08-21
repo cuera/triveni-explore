@@ -6,7 +6,7 @@ import SearchBox from "@/components/ui/search-box";
 import Navigation from "@/components/navigation";
 import DepartmentCard from "@/components/department-card";
 import { Calendar, MapPin, Users, Clock, ArrowRight, Sparkles, QrCode, BookOpen } from "lucide-react";
-import heroImage from "@/assets/hero-image.jpg";
+import heroPoster from "@/assets/hero-poster.jpg";
 
 interface Department {
   id: string;
@@ -93,7 +93,7 @@ const Index = () => {
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroImage})` }}
+          style={{ backgroundImage: `url(${heroPoster})` }}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-accent/60 to-success/70" />
         
@@ -245,11 +245,11 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="card-elevated group cursor-pointer">
+            <Card className="card-elevated group cursor-pointer" onClick={() => setCurrentPath("/departments")}>
               <CardContent className="p-6 text-center">
-                <QrCode className="w-12 h-12 text-accent mx-auto mb-4 group-hover:scale-110 transition-transform" />
-                <h3 className="font-semibold text-lg mb-2">QR Scanner</h3>
-                <p className="text-muted-foreground text-sm">Scan QR codes for instant department information</p>
+                <BookOpen className="w-12 h-12 text-accent mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                <h3 className="font-semibold text-lg mb-2">All Departments</h3>
+                <p className="text-muted-foreground text-sm">Browse all exhibition departments and activities</p>
               </CardContent>
             </Card>
 
