@@ -18,9 +18,17 @@ export default function MapView({ floorImage, floor }: { floorImage: string; flo
 
   const clampOffsets = (nextScale: number, nx: number, ny: number) => {
     const rect = containerRef.current?.getBoundingClientRect();
-    if (!rect) return { nx, ny };
-    const maxX = (rect.width * (nextScale - 1)) / 2;
-    const maxY = (rect.height * (nextScale - 1)) / 2;
+    const imgRect = imgRef.current?.getBoundingClientRect();
+    if (!rect || !imgRect) return { nx, ny };
+    
+    // Calculate the scaled image dimensions
+    const scaledWidth = imgRect.width * nextScale;
+    const scaledHeight = imgRect.height * nextScale;
+    
+    // Calculate maximum offsets to keep image within container
+    const maxX = Math.max(0, (scaledWidth - rect.width) / 2);
+    const maxY = Math.max(0, (scaledHeight - rect.height) / 2);
+    
     return {
       nx: Math.max(-maxX, Math.min(maxX, nx)),
       ny: Math.max(-maxY, Math.min(maxY, ny)),
@@ -30,7 +38,12 @@ export default function MapView({ floorImage, floor }: { floorImage: string; flo
   const zoomAtPoint = (clientX: number, clientY: number) => {
     const rect = containerRef.current?.getBoundingClientRect();
     if (!rect) return;
-    const newScale = scale === 1 ? 2 : 1;
+    
+    // Multi-level zoom: 1 → 1.5 → 2.5 → 4 → 1
+    const zoomLevels = [1, 1.5, 2.5, 4];
+    const currentIndex = zoomLevels.findIndex(level => Math.abs(level - scale) < 0.1);
+    const nextIndex = currentIndex >= 0 ? (currentIndex + 1) % zoomLevels.length : 1;
+    const newScale = zoomLevels[nextIndex];
 
     // Offset of tap from center
     const cx = rect.width / 2;
@@ -48,7 +61,7 @@ export default function MapView({ floorImage, floor }: { floorImage: string; flo
   };
 
   const onPointerDown = (e: React.PointerEvent) => {
-    if (scale === 1) return; // only drag when zoomed
+    if (scale <= 1) return; // only drag when zoomed beyond 1x
     (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
     setDragging(true);
     dragStart.current = { x: e.clientX, y: e.clientY, tx, ty };
@@ -89,11 +102,14 @@ export default function MapView({ floorImage, floor }: { floorImage: string; flo
     <div className="relative h-full flex flex-col">
       <div className="flex justify-between items-center mb-2 flex-shrink-0">
         <div className="text-sm text-muted-foreground">Double‑tap to zoom • Drag to pan</div>
-        {scale > 1 && (
-          <button onClick={() => { setScale(1); setTx(0); setTy(0); }} className="px-3 py-1 text-xs rounded-full border">
-            Reset
-          </button>
-        )}
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-muted-foreground">{scale.toFixed(1)}x</span>
+          {scale > 1 && (
+            <button onClick={() => { setScale(1); setTx(0); setTy(0); }} className="px-3 py-1 text-xs rounded-full border">
+              Reset
+            </button>
+          )}
+        </div>
       </div>
 
       <div
@@ -112,7 +128,7 @@ export default function MapView({ floorImage, floor }: { floorImage: string; flo
           src={floorImage}
           alt={`${floor} floor map`}
           onLoad={() => setLoaded(true)}
-          className={`w-full h-auto select-none transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`w-full h-full object-contain select-none transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
           style={{
             transform: `translate(${tx}px, ${ty}px) scale(${scale})`,
             transformOrigin: 'center center',
