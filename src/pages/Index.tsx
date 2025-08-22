@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import SearchBox from "@/components/ui/search-box";
+
 import Navigation from "@/components/navigation";
 import DepartmentCard from "@/components/department-card";
-import { Department, TimelineItem } from "@/types";
+import { Department } from "@/types";
 import { Calendar, MapPin, Users, Clock, ArrowRight, Sparkles, BookOpen } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import heroBanner from "@/assets/hero1.avif";
@@ -13,34 +13,15 @@ import heroBanner from "@/assets/hero1.avif";
 const Index = () => {
   const navigate = useNavigate();
   const [departments, setDepartments] = useState<Department[]>([]);
-  const [timeline, setTimeline] = useState<TimelineItem[]>([]);
-  const [nextEvent, setNextEvent] = useState<TimelineItem | null>(null);
-
   useEffect(() => {
     // Load departments data
     fetch('/data/departments.json')
       .then(res => res.json())
       .then(data => setDepartments(data))
       .catch(err => console.error('Failed to load departments:', err));
-
-    // Load timeline data
-    fetch('/data/timeline.json')
-      .then(res => res.json())
-      .then(data => {
-        setTimeline(data);
-        // Show featured event
-        setNextEvent(data[0]);
-      })
-      .catch(err => console.error('Failed to load timeline:', err));
   }, []);
 
-  const handleSearch = (result: { type: 'department' | 'room'; id: string }) => {
-    if (result.type === 'department') {
-      navigate(`/departments/${result.id}`);
-    } else if (result.type === 'room') {
-      navigate(`/map?highlight=${result.id}`);
-    }
-  };
+
 
 
 
@@ -56,38 +37,39 @@ const Index = () => {
           <div className="relative rounded-2xl overflow-hidden soft">
             <img src={heroBanner} alt="Triveni Exhibition" className="w-full h-80 object-cover opacity-90" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-transparent" />
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 py-8">
-              <Badge className="mb-4 bg-white/20 text-white border-white/30 hover:bg-white/30">
-                <Sparkles className="w-3 h-3 mr-1" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+              <Badge className="mb-6 bg-white/15 text-white border-white/20 hover:bg-white/25 backdrop-blur-sm">
+                <Sparkles className="w-3 h-3 mr-1.5" />
                 August 23, 2025
               </Badge>
 
-              <h1 className="text-3xl font-bold text-white leading-tight mb-2">
+              <h1 className="text-4xl font-bold text-white leading-tight mb-3 tracking-tight">
                 Welcome to <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">Triveni</span>
               </h1>
-              <p className="text-white/90 text-sm mb-4">
-                The Ultimate School Exhibition Experience at Royal Global School
+              <p className="text-white/95 text-base font-medium mb-2 max-w-sm leading-relaxed">
+                The Ultimate School Exhibition Experience
               </p>
-
-              <div className="w-full max-w-sm mb-8"><SearchBox onSelect={handleSearch} /></div>
+              <p className="text-white/75 text-sm">
+                Royal Global School
+              </p>
             </div>
             
             {/* Floating Buttons */}
-            <div className="absolute bottom-6 left-4 right-4 flex gap-2 justify-center">
+            <div className="absolute bottom-8 left-6 right-6 flex gap-3 justify-center">
               <Button 
                 size="sm"
-                className="glass pill text-black border border-black/10 hover:bg-white/90 shadow-lg backdrop-blur-sm"
+                className="glass pill text-black border border-white/20 hover:bg-white/95 shadow-xl backdrop-blur-md px-4 py-2.5"
                 onClick={() => navigate("/departments")}
               >
-                <BookOpen className="mr-1.5 h-4 w-4" />
+                <BookOpen className="mr-2 h-4 w-4" />
                 Explore Departments
               </Button>
               <Button 
                 size="sm"
-                className="pill bg-black text-white hover:bg-black/90 shadow-lg"
+                className="pill bg-white/10 text-white border border-white/30 hover:bg-white/20 shadow-xl backdrop-blur-md px-4 py-2.5"
                 onClick={() => navigate("/timeline")}
               >
-                <Clock className="mr-1.5 h-4 w-4" />
+                <Clock className="mr-2 h-4 w-4" />
                 View Events
               </Button>
             </div>
@@ -116,29 +98,14 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Next Event */}
-        {nextEvent && (
-          <section>
-            <div className="rounded-2xl glass soft p-3 text-black">
-              <div className="flex items-center gap-3">
-                <span className="w-3 h-3 rounded-full bg-emerald-500" />
-                <div className="flex-1">
-                  <div className="text-xs text-black/60">Featured Event</div>
-                  <div className="text-sm font-medium">{nextEvent.event}</div>
-                  <div className="text-[12px] text-black/60">{nextEvent.location}</div>
-                </div>
-                <Button onClick={() => navigate('/timeline')} className="pill bg-black text-white text-xs px-3 py-2">View Events</Button>
-              </div>
-            </div>
-          </section>
-        )}
+
 
         {/* Quick Actions */}
         <section>
           <div className="grid grid-cols-1 gap-3">
-            <div className="glass soft rounded-2xl p-4 text-black" role="button" onClick={() => navigate('/map')}>
+            <div className="glass soft rounded-2xl p-4 text-black" role="button" onClick={() => window.open('/Layout of Classroom (Floor-wiser).pdf', '_blank')}>
               <div className="text-sm font-semibold">Interactive Map</div>
-              <div className="text-[12px] text-black/60">Navigate through floors and find departments easily</div>
+              <div className="text-[12px] text-black/60">View detailed floor plans and classroom layouts</div>
             </div>
             <div className="glass soft rounded-2xl p-4 text-black" role="button" onClick={() => navigate('/timeline')}>
               <div className="text-sm font-semibold">Events</div>

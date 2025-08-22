@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Home, BookOpen, Clock, Map, Menu, X } from "lucide-react";
+import { Home, BookOpen, Clock, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import logoImage from "@/assets/logo.avif";
@@ -19,8 +19,7 @@ export default function Navigation({ currentPath: propCurrentPath, onNavigate }:
   const navItems = [
     { path: "/", label: "Home", icon: Home },
     { path: "/departments", label: "Departments", icon: BookOpen },
-    { path: "/timeline", label: "Timeline", icon: Clock },
-    { path: "/map", label: "Map", icon: Map }
+    { path: "/timeline", label: "Timeline", icon: Clock }
   ];
 
   const handleNavigate = (path: string) => {
