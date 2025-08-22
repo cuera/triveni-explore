@@ -8,8 +8,6 @@ import DepartmentCard from "@/components/department-card";
 import { Department } from "@/types";
 import { Search, Filter, Users, MapPin, Clock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import deptsData from "@/data/departments.json";
-
 const Departments = () => {
   const navigate = useNavigate();
   const [departments, setDepartments] = useState<Department[]>([]);
@@ -18,8 +16,14 @@ const Departments = () => {
   const [selectedFilter, setSelectedFilter] = useState("all");
 
   useEffect(() => {
-    setDepartments(deptsData as unknown as Department[]);
-    setFilteredDepartments(deptsData as unknown as Department[]);
+    // Load departments data from public API
+    fetch('/data/departments.json')
+      .then(res => res.json())
+      .then(data => {
+        setDepartments(data);
+        setFilteredDepartments(data);
+      })
+      .catch(err => console.error('Failed to load departments:', err));
   }, []);
 
   useEffect(() => {

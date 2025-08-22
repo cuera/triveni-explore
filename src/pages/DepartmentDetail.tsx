@@ -15,7 +15,7 @@ import {
   Share2, 
   ChevronLeft
 } from "lucide-react";
-import data from "@/data/departments.json";
+// import data from "@/data/departments.json";
 
 const idAliases: Record<string,string> = {
   english: "english-6-12",
@@ -36,7 +36,9 @@ const DepartmentDetail = () => {
     const loadDepartment = async () => {
       try {
         setLoading(true);
-        const list = data as unknown as Department[];
+        // Fetch from the same public API that Index.tsx uses
+        const response = await fetch('/data/departments.json');
+        const list = await response.json() as Department[];
         const normalizedId = (id && idAliases[id]) || id;
         const dept = list.find(d => d.id === normalizedId);
         if (dept) {
@@ -118,7 +120,7 @@ const DepartmentDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation currentPath={`/departments/${id}`} onNavigate={(path) => navigate(path)} />
+      <Navigation />
       
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
@@ -208,7 +210,7 @@ const DepartmentDetail = () => {
                     <Building className="h-5 w-5 text-muted-foreground mt-0.5" />
                     <div>
                       <p className="text-sm font-medium text-muted-foreground">Location</p>
-                      <p className="text-foreground">{department.block} • {department.floor}</p>
+                      <p className="text-foreground">{department.floor}</p>
                     </div>
                   </div>
                 </div>
