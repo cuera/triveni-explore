@@ -9,7 +9,7 @@ import DepartmentDetail from "./pages/DepartmentDetail";
 import Timeline from "./pages/Timeline";
 import Map from "./pages/Map";
 import NotFound from "./pages/NotFound";
-import BottomNav from "./components/BottomNav";
+
 
 const queryClient = new QueryClient();
 
@@ -29,7 +29,6 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <BottomNav />
         </div>
       </BrowserRouter>
     </TooltipProvider>

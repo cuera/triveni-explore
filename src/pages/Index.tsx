@@ -36,7 +36,7 @@ const Index = () => {
       .catch(err => console.error('Failed to load timeline:', err));
   }, []);
 
-  const handleSearch = (result: any) => {
+  const handleSearch = (result: { type: 'department' | 'room'; id: string }) => {
     if (result.type === 'department') {
       navigate(`/departments/${result.id}`);
     } else if (result.type === 'room') {
@@ -170,6 +170,8 @@ const Index = () => {
               <DepartmentCard
                 key={dept.id}
                 {...dept}
+                classes={dept.classes || 'All'}
+                activities={dept.activities || []}
                 onClick={() => navigate(`/departments/${dept.id}`)}
               />
             ))}

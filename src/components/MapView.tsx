@@ -1,80 +1,128 @@
 'use client';
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { useRef, useState } from 'react';
 
 type FloorKey = 'ground' | 'first';
-interface Hotspot {
-  id: string;
-  label: string;
-  deptId: string | null;
-  room: string;
-  block: string;
-  floor: FloorKey;
-  x: number; y: number;
-}
 
 export default function MapView({ floorImage, floor }: { floorImage: string; floor: FloorKey }) {
-  const [spots, setSpots] = useState<Hotspot[]>([]);
-  const [active, setActive] = useState<Hotspot | null>(null);
-  const [edit, setEdit] = useState(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
+  const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => { import('@/data/hotspots.json').then(m => setSpots(m.default as Hotspot[])); }, []);
+  const [scale, setScale] = useState(1);
+  const [tx, setTx] = useState(0);
+  const [ty, setTy] = useState(0);
 
-  const filtered = useMemo(() => spots.filter(s => s.floor === floor), [spots, floor]);
+  const [dragging, setDragging] = useState(false);
+  const dragStart = useRef<{ x: number; y: number; tx: number; ty: number } | null>(null);
+  const lastTapTs = useRef(0);
 
-  const onMapClick = (e: React.MouseEvent) => {
-    if (!edit || !imgRef.current) return;
-    const r = imgRef.current.getBoundingClientRect();
-    const nx = (e.clientX - r.left) / r.width;
-    const ny = (e.clientY - r.top) / r.height;
-    const text = `{ "x": ${nx.toFixed(3)}, "y": ${ny.toFixed(3)} }`;
-    navigator.clipboard?.writeText(text); alert(`Copied ${text} → paste into hotspots.json`);
+  const clampOffsets = (nextScale: number, nx: number, ny: number) => {
+    const rect = containerRef.current?.getBoundingClientRect();
+    if (!rect) return { nx, ny };
+    const maxX = (rect.width * (nextScale - 1)) / 2;
+    const maxY = (rect.height * (nextScale - 1)) / 2;
+    return {
+      nx: Math.max(-maxX, Math.min(maxX, nx)),
+      ny: Math.max(-maxY, Math.min(maxY, ny)),
+    };
+  };
+
+  const zoomAtPoint = (clientX: number, clientY: number) => {
+    const rect = containerRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const newScale = scale === 1 ? 2 : 1;
+
+    // Offset of tap from center
+    const cx = rect.width / 2;
+    const cy = rect.height / 2;
+    const dx = clientX - rect.left - cx;
+    const dy = clientY - rect.top - cy;
+
+    // Adjust translate so the tapped point tends toward center when zooming in
+    let nx = tx - (dx * (newScale - scale)) / newScale;
+    let ny = ty - (dy * (newScale - scale)) / newScale;
+    const clamped = clampOffsets(newScale, nx, ny);
+    setTx(clamped.nx);
+    setTy(clamped.ny);
+    setScale(newScale);
+  };
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    if (scale === 1) return; // only drag when zoomed
+    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    setDragging(true);
+    dragStart.current = { x: e.clientX, y: e.clientY, tx, ty };
+  };
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!dragging || !dragStart.current) return;
+    const rect = containerRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const dx = e.clientX - dragStart.current.x;
+    const dy = e.clientY - dragStart.current.y;
+    const nextX = dragStart.current.tx + dx;
+    const nextY = dragStart.current.ty + dy;
+    const clamped = clampOffsets(scale, nextX, nextY);
+    setTx(clamped.nx);
+    setTy(clamped.ny);
+  };
+
+  const onPointerUp = (e: React.PointerEvent) => {
+    setDragging(false);
+    dragStart.current = null;
+
+    // Double-tap detection (touch & mouse)
+    const now = Date.now();
+    if (now - lastTapTs.current < 300) {
+      zoomAtPoint(e.clientX, e.clientY);
+      lastTapTs.current = 0;
+    } else {
+      lastTapTs.current = now;
+    }
+  };
+
+  const onDoubleClick = (e: React.MouseEvent) => {
+    zoomAtPoint(e.clientX, e.clientY);
   };
 
   return (
     <div className="relative">
       <div className="flex justify-between items-center mb-2">
-        <div className="text-sm text-muted-foreground">Tap to open, long-press to zoom (pinch on mobile)</div>
-        <button onClick={()=>setEdit(v=>!v)} className={`px-3 py-1 text-xs rounded-full border ${edit?'bg-foreground text-background':''}`}>
-          {edit?'Editing (tap map)':'Edit pins'}
-        </button>
-      </div>
-
-      <div className="relative" onClick={onMapClick}>
-        <img ref={imgRef} src={floorImage} alt="floor map" className="w-full h-auto select-none rounded-lg shadow" />
-        {filtered.map(s => (
-          <button key={s.id} aria-label={s.label}
-            className="absolute -translate-x-1/2 -translate-y-1/2"
-            style={{ left: `${s.x*100}%`, top: `${s.y*100}%` }}
-            onClick={(ev)=>{ ev.stopPropagation(); setActive(s); }}>
-            <span className="block w-4 h-4 rounded-full bg-foreground ring-2 ring-background" />
-            <span className="absolute left-1/2 top-5 -translate-x-1/2 text-[10px] bg-foreground text-background rounded px-1.5 py-0.5 whitespace-nowrap">
-              {s.label}
-            </span>
+        <div className="text-sm text-muted-foreground">Double‑tap to zoom • Drag to pan</div>
+        {scale > 1 && (
+          <button onClick={() => { setScale(1); setTx(0); setTy(0); }} className="px-3 py-1 text-xs rounded-full border">
+            Reset
           </button>
-        ))}
+        )}
       </div>
 
-      <Sheet open={!!active} onOpenChange={()=>setActive(null)}>
-        <SheetContent side="bottom" className="max-w-md mx-auto">
-          {active && (
-            <>
-              <SheetHeader>
-                <SheetTitle>{active.label}</SheetTitle>
-              </SheetHeader>
-              <div className="mt-2 text-sm text-muted-foreground">
-                {active.room} • {active.block} • {active.floor}
-              </div>
-              {active.deptId && (
-                <a href={`/departments/${active.deptId}`} className="mt-3 inline-block px-3 py-2 rounded-lg bg-foreground text-background text-sm">
-                  Open department
-                </a>
-              )}
-            </>
-          )}
-        </SheetContent>
-      </Sheet>
+      <div
+        ref={containerRef}
+        className="relative overflow-hidden rounded-lg shadow touch-pan-y"
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onDoubleClick={onDoubleClick}
+        style={{
+          // ensure an aspect container while image loads
+        }}
+      >
+        <img
+          ref={imgRef}
+          src={floorImage}
+          alt={`${floor} floor map`}
+          onLoad={() => setLoaded(true)}
+          className={`w-full h-auto select-none transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+          style={{
+            transform: `translate(${tx}px, ${ty}px) scale(${scale})`,
+            transformOrigin: 'center center',
+            willChange: 'transform',
+          }}
+        />
+        <div className="absolute right-2 bottom-2 text-xs px-2 py-1 rounded-full bg-background/80 border">
+          {floor === 'ground' ? 'Ground Floor' : 'First Floor'}
+        </div>
+      </div>
     </div>
   );
 }
