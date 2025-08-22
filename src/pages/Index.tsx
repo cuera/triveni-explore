@@ -144,7 +144,7 @@ const Index = () => {
               <div className="text-[12px] text-black/60">Navigate through floors and find departments easily</div>
             </div>
             <div className="glass soft rounded-2xl p-4 text-black" role="button" onClick={() => navigate('/timeline')}>
-              <div className="text-sm font-semibold">Event Timeline</div>
+              <div className="text-sm font-semibold">Events</div>
               <div className="text-[12px] text-black/60">Stay updated with all performances and activities</div>
             </div>
           </div>

@@ -102,12 +102,8 @@ const Timeline = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-foreground mb-2">Event Timeline</h1>
+          <h1 className="text-4xl font-bold text-foreground mb-2">Events</h1>
           <p className="text-xl text-muted-foreground">Stay updated with all performances and activities</p>
-          <div className="flex items-center justify-center gap-2 mt-4 text-lg font-mono">
-            <Clock className="w-5 h-5 text-primary" />
-            <span className="text-primary font-semibold">Current Time: {currentTime}</span>
-          </div>
         </div>
 
         {/* Current Status Cards */}
@@ -123,9 +119,6 @@ const Timeline = () => {
               <CardContent>
                 <h3 className="font-semibold text-lg text-foreground mb-1">{currentEvent.event}</h3>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Clock className="w-3 h-3" />
-                  <span>{currentEvent.time}</span>
-                  <span>•</span>
                   <MapPin className="w-3 h-3" />
                   <span>{currentEvent.location}</span>
                 </div>
@@ -147,9 +140,6 @@ const Timeline = () => {
               <CardContent>
                 <h3 className="font-semibold text-lg text-foreground mb-1">{nextEvent.event}</h3>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Clock className="w-3 h-3" />
-                  <span>{nextEvent.time}</span>
-                  <span>•</span>
                   <MapPin className="w-3 h-3" />
                   <span>{nextEvent.location}</span>
                 </div>

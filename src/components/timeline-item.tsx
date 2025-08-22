@@ -51,17 +51,13 @@ export default function TimelineItem({
     >
       <CardContent className="p-4">
         <div className="flex items-start gap-4">
-          {/* Time and Icon */}
+          {/* Icon */}
           <div className="flex flex-col items-center min-w-0">
             <div className={cn(
               "w-10 h-10 rounded-full flex items-center justify-center text-lg",
               config.color
             )}>
               {config.icon}
-            </div>
-            <div className="flex items-center gap-1 mt-2">
-              <Clock className="h-3 w-3 text-muted-foreground" />
-              <span className="text-sm font-mono font-medium text-foreground">{time}</span>
             </div>
           </div>
 
