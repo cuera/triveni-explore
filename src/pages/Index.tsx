@@ -53,147 +53,149 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      {/* Hero Card */}
-      <section className="px-4 pt-4">
-        <div className="relative rounded-2xl overflow-hidden soft max-w-md mx-auto">
-          <img src={heroBanner} alt="Triveni Exhibition" className="w-full h-48 object-cover opacity-90" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-transparent" />
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-            <Badge className="mb-3 bg-white/20 text-white border-white/30 hover:bg-white/30">
-              <Sparkles className="w-3 h-3 mr-1" />
-              August 23, 2025
-            </Badge>
+      <main className="mx-auto max-w-md px-4 pt-4 space-y-5 pb-[calc(100px+var(--safe-bottom))]">
+        {/* Hero Card */}
+        <section>
+          <div className="relative rounded-2xl overflow-hidden soft">
+            <img src={heroBanner} alt="Triveni Exhibition" className="w-full h-48 object-cover opacity-90" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-transparent" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+              <Badge className="mb-3 bg-white/20 text-white border-white/30 hover:bg-white/30">
+                <Sparkles className="w-3 h-3 mr-1" />
+                August 23, 2025
+              </Badge>
 
-            <h1 className="text-3xl font-bold text-white leading-tight">
-              Welcome to <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">Triveni</span>
-            </h1>
-            <p className="mt-2 text-white/90 text-sm">
-              The Ultimate School Exhibition Experience at Royal Global School
-            </p>
+              <h1 className="text-3xl font-bold text-white leading-tight">
+                Welcome to <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">Triveni</span>
+              </h1>
+              <p className="mt-2 text-white/90 text-sm">
+                The Ultimate School Exhibition Experience at Royal Global School
+              </p>
 
-            <div className="w-full max-w-sm mt-3"><SearchBox onSelect={handleSearch} /></div>
+              <div className="w-full max-w-sm mt-3"><SearchBox onSelect={handleSearch} /></div>
 
-            <div className="flex gap-2 mt-3">
-              <Button 
-                size="lg" 
-                className="glass pill text-black border border-black/10 hover:bg-white/90"
-                onClick={() => navigate("/departments")}
-              >
-                <BookOpen className="mr-2 h-5 w-5" />
-                Explore Departments
-              </Button>
-              <Button 
-                size="lg" 
-                className="pill bg-black text-white hover:bg-black/90"
-                onClick={() => navigate("/timeline")}
-              >
-                <Clock className="mr-2 h-5 w-5" />
-                View Schedule
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Quick Stats */}
-      <section className="px-4">
-        <div className="max-w-md mx-auto grid grid-cols-2 gap-2">
-          <div className="glass pill px-3 py-2 text-black">
-            <div className="text-base font-semibold">{departments.length}</div>
-            <div className="text-[12px] opacity-70">Departments</div>
-          </div>
-          <div className="glass pill px-3 py-2 text-black">
-            <div className="text-base font-semibold">50+</div>
-            <div className="text-[12px] opacity-70">Activities</div>
-          </div>
-          <div className="glass pill px-3 py-2 text-black">
-            <div className="text-base font-semibold">3</div>
-            <div className="text-[12px] opacity-70">Blocks</div>
-          </div>
-          <div className="glass pill px-3 py-2 text-black">
-            <div className="text-base font-semibold">All Day</div>
-            <div className="text-[12px] opacity-70">Open</div>
-          </div>
-        </div>
-      </section>
-
-      {/* Next Event */}
-      {nextEvent && (
-        <section className="px-4">
-          <div className="max-w-md mx-auto rounded-2xl glass soft p-3 text-black">
-            <div className="flex items-center gap-3">
-              <span className="w-3 h-3 rounded-full bg-emerald-500" />
-              <div className="flex-1">
-                <div className="text-xs text-black/60">Coming Up Next</div>
-                <div className="text-sm font-medium">{nextEvent.event}</div>
-                <div className="text-[12px] text-black/60">{nextEvent.time} • {nextEvent.location}</div>
+              <div className="flex gap-2 mt-3">
+                <Button 
+                  size="lg" 
+                  className="glass pill text-black border border-black/10 hover:bg-white/90"
+                  onClick={() => navigate("/departments")}
+                >
+                  <BookOpen className="mr-2 h-5 w-5" />
+                  Explore Departments
+                </Button>
+                <Button 
+                  size="lg" 
+                  className="pill bg-black text-white hover:bg-black/90"
+                  onClick={() => navigate("/timeline")}
+                >
+                  <Clock className="mr-2 h-5 w-5" />
+                  View Schedule
+                </Button>
               </div>
-              <Button onClick={() => navigate('/timeline')} className="pill bg-black text-white text-xs px-3 py-2">Full Schedule</Button>
             </div>
           </div>
         </section>
-      )}
 
-      {/* Featured Departments */}
-      <section className="px-4">
-        <div className="max-w-md mx-auto">
-          <div className="mb-4">
-            <h2 className="text-xl font-semibold">Featured Departments</h2>
-            <p className="text-sm text-white/60">Discover amazing exhibits and activities</p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-3">
-            {featuredDepartments.map((dept) => (
-              <DepartmentCard
-                key={dept.id}
-                {...dept}
-                classes={dept.classes || 'All'}
-                activities={dept.activities || []}
-                onClick={() => navigate(`/departments/${dept.id}`)}
-              />
-            ))}
-          </div>
-
-          <div className="text-center mt-4">
-            <Button 
-              size="lg" 
-              onClick={() => navigate("/departments")}
-              className="pill bg-black text-white hover:bg-black/90"
-            >
-              View All Departments
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Quick Actions */}
-      <section className="px-4">
-        <div className="max-w-md mx-auto grid grid-cols-1 gap-3">
-          <div className="glass soft rounded-2xl p-4 text-black" role="button" onClick={() => navigate('/map')}>
-            <div className="text-sm font-semibold">Interactive Map</div>
-            <div className="text-[12px] text-black/60">Navigate through floors and find departments easily</div>
-          </div>
-          <div className="glass soft rounded-2xl p-4 text-black" role="button" onClick={() => navigate('/timeline')}>
-            <div className="text-sm font-semibold">Event Timeline</div>
-            <div className="text-[12px] text-black/60">Stay updated with all performances and activities</div>
-          </div>
-        </div>
-      </section>
-
-      {/* Event Info */}
-      <section className="px-4 pb-28">
-        <div className="max-w-md mx-auto text-center">
-          <div className="glass soft rounded-2xl p-4 text-black">
-            <div className="text-lg font-semibold">Royal Global School</div>
-            <div className="mt-2 flex flex-col items-center gap-1 text-[13px] text-black/70">
-              <div className="flex items-center gap-2"><Calendar className="w-4 h-4" /><span>August 23, 2025</span></div>
-              <div className="flex items-center gap-2"><MapPin className="w-4 h-4" /><span>Guwahati, Assam</span></div>
-              <div className="flex items-center gap-2"><Users className="w-4 h-4" /><span>Open to All Visitors</span></div>
+        {/* Quick Stats */}
+        <section>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="glass pill px-3 py-2 text-black">
+              <div className="text-base font-semibold">{departments.length}</div>
+              <div className="text-[12px] opacity-70">Departments</div>
+            </div>
+            <div className="glass pill px-3 py-2 text-black">
+              <div className="text-base font-semibold">50+</div>
+              <div className="text-[12px] opacity-70">Activities</div>
+            </div>
+            <div className="glass pill px-3 py-2 text-black">
+              <div className="text-base font-semibold">3</div>
+              <div className="text-[12px] opacity-70">Blocks</div>
+            </div>
+            <div className="glass pill px-3 py-2 text-black">
+              <div className="text-base font-semibold">All Day</div>
+              <div className="text-[12px] opacity-70">Open</div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Next Event */}
+        {nextEvent && (
+          <section>
+            <div className="rounded-2xl glass soft p-3 text-black">
+              <div className="flex items-center gap-3">
+                <span className="w-3 h-3 rounded-full bg-emerald-500" />
+                <div className="flex-1">
+                  <div className="text-xs text-black/60">Coming Up Next</div>
+                  <div className="text-sm font-medium">{nextEvent.event}</div>
+                  <div className="text-[12px] text-black/60">{nextEvent.time} • {nextEvent.location}</div>
+                </div>
+                <Button onClick={() => navigate('/timeline')} className="pill bg-black text-white text-xs px-3 py-2">Full Schedule</Button>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Featured Departments */}
+        <section>
+          <div>
+            <div className="mb-4 space-y-1">
+              <h2 className="text-xl font-semibold">Featured Departments</h2>
+              <p className="text-sm text-white/60">Discover amazing exhibits and activities</p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-3">
+              {featuredDepartments.map((dept) => (
+                <DepartmentCard
+                  key={dept.id}
+                  {...dept}
+                  classes={dept.classes || 'All'}
+                  activities={dept.activities || []}
+                  onClick={() => navigate(`/departments/${dept.id}`)}
+                />
+              ))}
+            </div>
+
+            <div className="text-center mt-4">
+              <Button 
+                size="lg" 
+                onClick={() => navigate("/departments")}
+                className="pill bg-black text-white hover:bg-black/90"
+              >
+                View All Departments
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Quick Actions */}
+        <section>
+          <div className="grid grid-cols-1 gap-3">
+            <div className="glass soft rounded-2xl p-4 text-black" role="button" onClick={() => navigate('/map')}>
+              <div className="text-sm font-semibold">Interactive Map</div>
+              <div className="text-[12px] text-black/60">Navigate through floors and find departments easily</div>
+            </div>
+            <div className="glass soft rounded-2xl p-4 text-black" role="button" onClick={() => navigate('/timeline')}>
+              <div className="text-sm font-semibold">Event Timeline</div>
+              <div className="text-[12px] text-black/60">Stay updated with all performances and activities</div>
+            </div>
+          </div>
+        </section>
+
+        {/* Event Info */}
+        <section>
+          <div className="text-center">
+            <div className="glass soft rounded-2xl p-4 text-black">
+              <div className="text-lg font-semibold">Royal Global School</div>
+              <div className="mt-2 flex flex-col items-center gap-1 text-[13px] text-black/70">
+                <div className="flex items-center gap-2"><Calendar className="w-4 h-4" /><span>August 23, 2025</span></div>
+                <div className="flex items-center gap-2"><MapPin className="w-4 h-4" /><span>Guwahati, Assam</span></div>
+                <div className="flex items-center gap-2"><Users className="w-4 h-4" /><span>Open to All Visitors</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 };

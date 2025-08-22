@@ -39,8 +39,8 @@ export default function Navigation({ currentPath: propCurrentPath, onNavigate }:
   return (
     <>
       {/* Mobile Navigation */}
-      <div className="dock glass soft rounded-2xl text-black max-w-md mx-auto left-4 right-4 z-50 lg:hidden">
-        <div className="flex items-center justify-around p-2">
+      <div className="fixed left-4 right-4 z-50 bottom-[calc(16px+var(--safe-bottom))] rounded-2xl backdrop-blur bg-white/90 border border-black/10 shadow-lg px-3 py-2 lg:hidden">
+        <div className="flex items-center justify-between gap-2">
           {navItems.map(({ path, label, icon: Icon }) => (
             <Button
               key={path}
