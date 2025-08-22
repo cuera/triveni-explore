@@ -1,5 +1,5 @@
 'use client';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 type FloorKey = 'ground' | 'first';
 
@@ -13,8 +13,19 @@ export default function MapView({ floorImage, floor }: { floorImage: string; flo
   const [ty, setTy] = useState(0);
 
   const [dragging, setDragging] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
   const dragStart = useRef<{ x: number; y: number; tx: number; ty: number } | null>(null);
   const lastTapTs = useRef(0);
+  const animationRef = useRef<number | null>(null);
+
+  // Cleanup animation on unmount
+  useEffect(() => {
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, []);
 
   const clampOffsets = (nextScale: number, nx: number, ny: number) => {
     const rect = containerRef.current?.getBoundingClientRect();
@@ -35,7 +46,45 @@ export default function MapView({ floorImage, floor }: { floorImage: string; flo
     };
   };
 
+  const smoothZoomTo = (targetScale: number, targetTx: number, targetTy: number, duration = 400) => {
+    if (isAnimating) return; // Prevent multiple animations
+    
+    const startScale = scale;
+    const startTx = tx;
+    const startTy = ty;
+    const startTime = performance.now();
+    
+    setIsAnimating(true);
+    
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing function for natural feel (ease-out-quart)
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      
+      const currentScale = startScale + (targetScale - startScale) * easeOutQuart;
+      const currentTx = startTx + (targetTx - startTx) * easeOutQuart;
+      const currentTy = startTy + (targetTy - startTy) * easeOutQuart;
+      
+      setScale(currentScale);
+      setTx(currentTx);
+      setTy(currentTy);
+      
+      if (progress < 1) {
+        animationRef.current = requestAnimationFrame(animate);
+      } else {
+        setIsAnimating(false);
+        animationRef.current = null;
+      }
+    };
+    
+    animationRef.current = requestAnimationFrame(animate);
+  };
+
   const zoomAtPoint = (clientX: number, clientY: number) => {
+    if (isAnimating) return; // Don't allow zoom during animation
+    
     const rect = containerRef.current?.getBoundingClientRect();
     if (!rect) return;
     
@@ -55,9 +104,9 @@ export default function MapView({ floorImage, floor }: { floorImage: string; flo
     let nx = tx - (dx * (newScale - scale)) / newScale;
     let ny = ty - (dy * (newScale - scale)) / newScale;
     const clamped = clampOffsets(newScale, nx, ny);
-    setTx(clamped.nx);
-    setTy(clamped.ny);
-    setScale(newScale);
+    
+    // Use smooth animation instead of instant change
+    smoothZoomTo(newScale, clamped.nx, clamped.ny);
   };
 
   const onPointerDown = (e: React.PointerEvent) => {
@@ -105,7 +154,7 @@ export default function MapView({ floorImage, floor }: { floorImage: string; flo
         <div className="flex items-center gap-2">
           <span className="text-xs text-muted-foreground">{scale.toFixed(1)}x</span>
           {scale > 1 && (
-            <button onClick={() => { setScale(1); setTx(0); setTy(0); }} className="px-3 py-1 text-xs rounded-full border">
+            <button onClick={() => smoothZoomTo(1, 0, 0)} className="px-3 py-1 text-xs rounded-full border">
               Reset
             </button>
           )}

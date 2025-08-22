@@ -113,8 +113,8 @@ const Index = () => {
               <div className="text-[12px] opacity-70">Blocks</div>
             </div>
             <div className="glass pill px-3 py-2 text-black">
-              <div className="text-base font-semibold">All Day</div>
-              <div className="text-[12px] opacity-70">Open</div>
+              <div className="text-base font-semibold">9 AM</div>
+              <div className="text-[12px] opacity-70">till 1:30 PM</div>
             </div>
           </div>
         </section>
@@ -135,6 +135,20 @@ const Index = () => {
             </div>
           </section>
         )}
+
+        {/* Quick Actions */}
+        <section>
+          <div className="grid grid-cols-1 gap-3">
+            <div className="glass soft rounded-2xl p-4 text-black" role="button" onClick={() => navigate('/map')}>
+              <div className="text-sm font-semibold">Interactive Map</div>
+              <div className="text-[12px] text-black/60">Navigate through floors and find departments easily</div>
+            </div>
+            <div className="glass soft rounded-2xl p-4 text-black" role="button" onClick={() => navigate('/timeline')}>
+              <div className="text-sm font-semibold">Event Timeline</div>
+              <div className="text-[12px] text-black/60">Stay updated with all performances and activities</div>
+            </div>
+          </div>
+        </section>
 
         {/* Featured Departments */}
         <section>
@@ -165,20 +179,6 @@ const Index = () => {
                 View All Departments
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-            </div>
-          </div>
-        </section>
-
-        {/* Quick Actions */}
-        <section>
-          <div className="grid grid-cols-1 gap-3">
-            <div className="glass soft rounded-2xl p-4 text-black" role="button" onClick={() => navigate('/map')}>
-              <div className="text-sm font-semibold">Interactive Map</div>
-              <div className="text-[12px] text-black/60">Navigate through floors and find departments easily</div>
-            </div>
-            <div className="glass soft rounded-2xl p-4 text-black" role="button" onClick={() => navigate('/timeline')}>
-              <div className="text-sm font-semibold">Event Timeline</div>
-              <div className="text-[12px] text-black/60">Stay updated with all performances and activities</div>
             </div>
           </div>
         </section>
