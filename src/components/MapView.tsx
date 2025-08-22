@@ -86,8 +86,8 @@ export default function MapView({ floorImage, floor }: { floorImage: string; flo
   };
 
   return (
-    <div className="relative">
-      <div className="flex justify-between items-center mb-2">
+    <div className="relative h-full flex flex-col">
+      <div className="flex justify-between items-center mb-2 flex-shrink-0">
         <div className="text-sm text-muted-foreground">Double‑tap to zoom • Drag to pan</div>
         {scale > 1 && (
           <button onClick={() => { setScale(1); setTx(0); setTy(0); }} className="px-3 py-1 text-xs rounded-full border">
@@ -98,13 +98,13 @@ export default function MapView({ floorImage, floor }: { floorImage: string; flo
 
       <div
         ref={containerRef}
-        className="relative overflow-hidden rounded-lg shadow touch-pan-y"
+        className="relative overflow-hidden rounded-lg shadow touch-pan-y flex-1"
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
         onDoubleClick={onDoubleClick}
         style={{
-          // ensure an aspect container while image loads
+          minHeight: '400px' // ensure minimum height for the map
         }}
       >
         <img
