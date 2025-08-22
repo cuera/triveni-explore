@@ -57,24 +57,24 @@ const Index = () => {
         {/* Hero Card */}
         <section>
           <div className="relative rounded-2xl overflow-hidden soft">
-            <img src={heroBanner} alt="Triveni Exhibition" className="w-full h-48 object-cover opacity-90" />
+            <img src={heroBanner} alt="Triveni Exhibition" className="w-full h-64 object-cover opacity-90" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-transparent" />
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-              <Badge className="mb-3 bg-white/20 text-white border-white/30 hover:bg-white/30">
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 py-6">
+              <Badge className="mb-4 bg-white/20 text-white border-white/30 hover:bg-white/30">
                 <Sparkles className="w-3 h-3 mr-1" />
                 August 23, 2025
               </Badge>
 
-              <h1 className="text-3xl font-bold text-white leading-tight">
+              <h1 className="text-3xl font-bold text-white leading-tight mb-2">
                 Welcome to <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">Triveni</span>
               </h1>
-              <p className="mt-2 text-white/90 text-sm">
+              <p className="text-white/90 text-sm mb-4">
                 The Ultimate School Exhibition Experience at Royal Global School
               </p>
 
-              <div className="w-full max-w-sm mt-3"><SearchBox onSelect={handleSearch} /></div>
+              <div className="w-full max-w-sm mb-4"><SearchBox onSelect={handleSearch} /></div>
 
-              <div className="flex gap-2 mt-3">
+              <div className="flex gap-2">
                 <Button 
                   size="lg" 
                   className="glass pill text-black border border-black/10 hover:bg-white/90"
