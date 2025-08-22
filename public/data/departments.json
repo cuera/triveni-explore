@@ -75,20 +75,24 @@
   {
     "id": "art",
     "name": "Fine Arts",
-    "teacher": "Mr. Nabajyoti Phukan",
+    "teacher": "Tulirekha Deb & Nabajyoti Phukan",
     "room": "Block C",
-    "floor": "Block C",
+    "floor": "Block C • Block B",
     "classes": "All",
     "activities": [
       "Welcome Gate (A Block Front)",
       "Artificial Forest (Reception)",
+      "Corsets",
       "Desert Scene with Train",
       "Robot Planting Tree Installation",
-      "Central Desert & Forest Installation"
+      "Central Desert & Forest Installation",
+      "Tshirts",
+      "Tote bags",
+      "Keychains"
     ],
     "qr": "art",
-    "theme": "Creative Expressions",
-    "description": "Explore artistic creativity through stunning installations and visual art displays."
+    "theme": "Creative Expressions & the Painted Narrative",
+    "description": "Explore artistic creativity through stunning installations, visual art displays, and handcrafted items in C plaza."
   },
   {
     "id": "science_9_12",
