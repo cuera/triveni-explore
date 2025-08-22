@@ -57,9 +57,9 @@ const Index = () => {
         {/* Hero Card */}
         <section>
           <div className="relative rounded-2xl overflow-hidden soft">
-            <img src={heroBanner} alt="Triveni Exhibition" className="w-full h-64 object-cover opacity-90" />
+            <img src={heroBanner} alt="Triveni Exhibition" className="w-full h-80 object-cover opacity-90" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-transparent" />
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 py-6">
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 py-8">
               <Badge className="mb-4 bg-white/20 text-white border-white/30 hover:bg-white/30">
                 <Sparkles className="w-3 h-3 mr-1" />
                 August 23, 2025
@@ -72,11 +72,11 @@ const Index = () => {
                 The Ultimate School Exhibition Experience at Royal Global School
               </p>
 
-              <div className="w-full max-w-sm mb-6"><SearchBox onSelect={handleSearch} /></div>
+              <div className="w-full max-w-sm mb-8"><SearchBox onSelect={handleSearch} /></div>
             </div>
             
             {/* Floating Buttons */}
-            <div className="absolute bottom-4 left-4 right-4 flex gap-2 justify-center">
+            <div className="absolute bottom-6 left-4 right-4 flex gap-2 justify-center">
               <Button 
                 size="sm"
                 className="glass pill text-black border border-black/10 hover:bg-white/90 shadow-lg backdrop-blur-sm"
