@@ -92,7 +92,7 @@ const Index = () => {
               <div className="text-[12px] opacity-70">Blocks</div>
             </div>
             <div className="glass pill px-3 py-2 text-black">
-              <div className="text-base font-semibold">9 AM</div>
+              <div className="text-base font-semibold">9:30 AM</div>
               <div className="text-[12px] opacity-70">till 1:30 PM</div>
             </div>
           </div>
