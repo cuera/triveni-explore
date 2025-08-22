@@ -180,13 +180,13 @@
     "floor": "B Block Ground Floor",
     "classes": "6-12",
     "activities": [
-      "Student Performance AI Dashboard",
-      "AI Hedge Fund Simulator",
-      "Interview-AI Avatar",
+      "Boring Captcha turns to emoCaptcha",
+      "AR-VR Games Forged at the Heart of RGS",
+      "Healthcare AI Assistant",
       "FitMind Wellness Companion",
-      "Audio Anomaly Detection",
+      "AI Tutor",
       "Vision-Driven Robots",
-      "Talking Tree Interactive"
+      "Harry Potter Invisibility Cloak"
     ],
     "budget": "₹40,000",
     "qr": "ai",
@@ -404,7 +404,7 @@
   },
   {
     "id": "english_puppet_special",
-    "name": "English - Puppet Plaza (Special Education)",
+    "name": "English - Puppet Plaza ",
     "teacher": "Sanjukta Borah",
     "room": "Special Education Room",
     "floor": "Ground Floor",

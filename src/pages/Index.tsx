@@ -25,7 +25,7 @@ const Index = () => {
 
 
 
-  const featuredDepartments = departments.slice(0, 30);
+  const featuredDepartments = departments; // Show ALL departments
 
   return (
     <div className="min-h-screen bg-background">
@@ -84,7 +84,7 @@ const Index = () => {
               <div className="text-[12px] opacity-70">Departments</div>
             </div>
             <div className="glass pill px-3 py-2 text-black">
-              <div className="text-base font-semibold">50+</div>
+              <div className="text-base font-semibold">{departments.reduce((total, dept) => total + (dept.activities?.length || 0), 0)}+</div>
               <div className="text-[12px] opacity-70">Activities</div>
             </div>
             <div className="glass pill px-3 py-2 text-black">
@@ -117,10 +117,10 @@ const Index = () => {
         {/* Featured Departments */}
         <section>
           <div>
-            <div className="mb-4 space-y-1">
-              <h2 className="text-xl font-semibold">Featured Departments</h2>
-              <p className="text-sm text-white/60">Discover amazing exhibits and activities</p>
-            </div>
+                               <div className="mb-4 space-y-1">
+                     <h2 className="text-xl font-semibold">All Departments</h2>
+                     <p className="text-sm text-white/60">Discover all amazing exhibits and activities</p>
+                   </div>
 
             <div className="grid grid-cols-1 gap-3">
               {featuredDepartments.map((dept) => (
@@ -134,16 +134,7 @@ const Index = () => {
               ))}
             </div>
 
-            <div className="text-center mt-4">
-              <Button 
-                size="lg" 
-                onClick={() => navigate("/departments")}
-                className="pill bg-black text-white hover:bg-black/90"
-              >
-                View All Departments
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </div>
+
           </div>
         </section>
 
