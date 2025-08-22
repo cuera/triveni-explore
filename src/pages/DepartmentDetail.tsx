@@ -83,7 +83,7 @@ const DepartmentDetail = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-background">
-        <Navigation currentPath={`/departments/${id}`} onNavigate={(path) => navigate(path)} />
+        <Navigation />
         <div className="container mx-auto px-4 py-8">
           <div className="flex items-center justify-center min-h-64">
             <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
@@ -96,7 +96,7 @@ const DepartmentDetail = () => {
   if (error || !department) {
     return (
       <div className="min-h-screen bg-background">
-        <Navigation currentPath={`/departments/${id}`} onNavigate={(path) => navigate(path)} />
+        <Navigation />
         <div className="container mx-auto px-4 py-8">
           <div className="text-center py-16">
             <h1 className="text-2xl font-bold text-foreground mb-4">

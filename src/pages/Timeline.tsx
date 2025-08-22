@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -8,11 +9,11 @@ import { TimelineItem as TimelineItemType } from "@/types";
 import { Clock, Calendar, MapPin, Filter, RefreshCw } from "lucide-react";
 
 const Timeline = () => {
+  const navigate = useNavigate();
   const [timeline, setTimeline] = useState<TimelineItemType[]>([]);
   const [filteredTimeline, setFilteredTimeline] = useState<TimelineItemType[]>([]);
   const [currentTime, setCurrentTime] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("all");
-  const [currentPath, setCurrentPath] = useState("/timeline");
 
   useEffect(() => {
     fetch('/data/timeline.json')
@@ -61,13 +62,9 @@ const Timeline = () => {
     setFilteredTimeline(filtered);
   }, [selectedFilter, timeline, currentTime]);
 
-  const handleNavigate = (path: string) => {
-    setCurrentPath(path);
-  };
-
   const handleTimelineClick = (event: TimelineItemType) => {
     if (event.departmentId) {
-      setCurrentPath(`/departments/${event.departmentId}`);
+      navigate(`/departments/${event.departmentId}`);
     }
   };
 
@@ -93,29 +90,14 @@ const Timeline = () => {
     { id: "ceremonies", label: "Ceremonies", icon: null }
   ];
 
-  if (currentPath !== "/timeline") {
-    return (
-      <div className="min-h-screen bg-background">
-        <Navigation currentPath={currentPath} onNavigate={handleNavigate} />
-        <div className="container mx-auto px-4 py-8">
-          <p className="text-center text-muted-foreground">
-            Navigate to: {currentPath}
-            <br />
-            <Button variant="outline" onClick={() => setCurrentPath("/timeline")}>
-              Back to Timeline
-            </Button>
-          </p>
-        </div>
-      </div>
-    );
-  }
+
 
   const currentEvent = timeline.find(event => isEventActive(event));
   const nextEvent = timeline.find(event => event.time > currentTime);
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation currentPath={currentPath} onNavigate={handleNavigate} />
+      <Navigation />
       
       <div className="container mx-auto px-4 py-8">
         {/* Header */}

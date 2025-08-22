@@ -8,6 +8,7 @@ import DepartmentCard from "@/components/department-card";
 import { Department, TimelineItem } from "@/types";
 import { Calendar, MapPin, Users, Clock, ArrowRight, Sparkles, BookOpen } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import heroBanner from "@/assets/herobanner.png";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -44,39 +45,38 @@ const Index = () => {
     }
   };
 
-  const handleNavigate = (path: string) => {
-    navigate(path);
-  };
+
 
   const featuredDepartments = departments.slice(0, 6);
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation currentPath={"/"} onNavigate={handleNavigate} />
+      <Navigation />
       
       {/* Hero Card */}
       <section className="px-4 pt-4">
-        <div className="relative rounded-2xl overflow-hidden shadow-elegant max-w-3xl mx-auto">
-          <img src="/royaltriveni.png" alt="Triveni Exhibition" className="w-full h-64 md:h-72 object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60" />
+        <div className="relative rounded-2xl overflow-hidden soft max-w-md mx-auto">
+          <img src={heroBanner} alt="Triveni Exhibition" className="w-full h-48 object-cover opacity-90" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-transparent" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
             <Badge className="mb-3 bg-white/20 text-white border-white/30 hover:bg-white/30">
               <Sparkles className="w-3 h-3 mr-1" />
               August 23, 2025
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight max-w-[90%]">
+
+            <h1 className="text-3xl font-bold text-white leading-tight">
               Welcome to <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">Triveni</span>
             </h1>
-            <p className="mt-3 text-white/90 max-w-[90%]">
+            <p className="mt-2 text-white/90 text-sm">
               The Ultimate School Exhibition Experience at Royal Global School
             </p>
-            <div className="w-full max-w-md mt-4">
-              <SearchBox onSelect={handleSearch} />
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 mt-4">
+
+            <div className="w-full max-w-sm mt-3"><SearchBox onSelect={handleSearch} /></div>
+
+            <div className="flex gap-2 mt-3">
               <Button 
                 size="lg" 
-                className="btn-glass text-white border-white/40 hover:bg-white/10"
+                className="glass pill text-black border border-black/10 hover:bg-white/90"
                 onClick={() => navigate("/departments")}
               >
                 <BookOpen className="mr-2 h-5 w-5" />
@@ -84,8 +84,7 @@ const Index = () => {
               </Button>
               <Button 
                 size="lg" 
-                variant="default"
-                className="bg-foreground text-background hover:bg-foreground/90"
+                className="pill bg-black text-white hover:bg-black/90"
                 onClick={() => navigate("/timeline")}
               >
                 <Clock className="mr-2 h-5 w-5" />
@@ -97,75 +96,53 @@ const Index = () => {
       </section>
 
       {/* Quick Stats */}
-      <section className="py-12 px-4">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Card className="card-gradient text-center">
-              <CardContent className="p-4">
-                <div className="text-2xl font-bold text-primary">{departments.length}</div>
-                <div className="text-sm text-muted-foreground">Departments</div>
-              </CardContent>
-            </Card>
-            <Card className="card-gradient text-center">
-              <CardContent className="p-4">
-                <div className="text-2xl font-bold text-accent">50+</div>
-                <div className="text-sm text-muted-foreground">Activities</div>
-              </CardContent>
-            </Card>
-            <Card className="card-gradient text-center">
-              <CardContent className="p-4">
-                <div className="text-2xl font-bold text-success">3</div>
-                <div className="text-sm text-muted-foreground">Blocks</div>
-              </CardContent>
-            </Card>
-            <Card className="card-gradient text-center">
-              <CardContent className="p-4">
-                <div className="text-2xl font-bold text-warning">All Day</div>
-                <div className="text-sm text-muted-foreground">Open</div>
-              </CardContent>
-            </Card>
+      <section className="px-4">
+        <div className="max-w-md mx-auto grid grid-cols-2 gap-2">
+          <div className="glass pill px-3 py-2 text-black">
+            <div className="text-base font-semibold">{departments.length}</div>
+            <div className="text-[12px] opacity-70">Departments</div>
+          </div>
+          <div className="glass pill px-3 py-2 text-black">
+            <div className="text-base font-semibold">50+</div>
+            <div className="text-[12px] opacity-70">Activities</div>
+          </div>
+          <div className="glass pill px-3 py-2 text-black">
+            <div className="text-base font-semibold">3</div>
+            <div className="text-[12px] opacity-70">Blocks</div>
+          </div>
+          <div className="glass pill px-3 py-2 text-black">
+            <div className="text-base font-semibold">All Day</div>
+            <div className="text-[12px] opacity-70">Open</div>
           </div>
         </div>
       </section>
 
       {/* Next Event */}
       {nextEvent && (
-        <section className="py-8 px-4">
-          <div className="container mx-auto">
-            <Card className="card-elevated border-success/20 bg-gradient-to-r from-success/5 to-success-glow/5">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-success rounded-full flex items-center justify-center">
-                    <Clock className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-lg text-foreground">Coming Up Next</h3>
-                    <p className="text-success font-medium">{nextEvent.event}</p>
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground mt-1">
-                      <span>{nextEvent.time}</span>
-                      <span>•</span>
-                      <span>{nextEvent.location}</span>
-                    </div>
-                  </div>
-                  <Button onClick={() => navigate("/timeline")} className="bg-success text-white hover:bg-success/90">
-                    View Full Schedule
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+        <section className="px-4">
+          <div className="max-w-md mx-auto rounded-2xl glass soft p-3 text-black">
+            <div className="flex items-center gap-3">
+              <span className="w-3 h-3 rounded-full bg-emerald-500" />
+              <div className="flex-1">
+                <div className="text-xs text-black/60">Coming Up Next</div>
+                <div className="text-sm font-medium">{nextEvent.event}</div>
+                <div className="text-[12px] text-black/60">{nextEvent.time} • {nextEvent.location}</div>
+              </div>
+              <Button onClick={() => navigate('/timeline')} className="pill bg-black text-white text-xs px-3 py-2">Full Schedule</Button>
+            </div>
           </div>
         </section>
       )}
 
       {/* Featured Departments */}
-      <section className="py-12 px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-foreground mb-2">Featured Departments</h2>
-            <p className="text-muted-foreground">Discover amazing exhibits and activities</p>
+      <section className="px-4">
+        <div className="max-w-md mx-auto">
+          <div className="mb-4">
+            <h2 className="text-xl font-semibold">Featured Departments</h2>
+            <p className="text-sm text-white/60">Discover amazing exhibits and activities</p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div className="grid grid-cols-1 gap-3">
             {featuredDepartments.map((dept) => (
               <DepartmentCard
                 key={dept.id}
@@ -177,11 +154,11 @@ const Index = () => {
             ))}
           </div>
 
-          <div className="text-center mt-8">
+          <div className="text-center mt-4">
             <Button 
               size="lg" 
               onClick={() => navigate("/departments")}
-              className="btn-hero"
+              className="pill bg-black text-white hover:bg-black/90"
             >
               View All Departments
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -191,50 +168,30 @@ const Index = () => {
       </section>
 
       {/* Quick Actions */}
-      <section className="py-12 px-4 bg-muted/30">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="card-elevated group cursor-pointer" onClick={() => navigate("/map")}>
-              <CardContent className="p-6 text-center">
-                <MapPin className="w-12 h-12 text-primary mx-auto mb-4 group-hover:scale-110 transition-transform" />
-                <h3 className="font-semibold text-lg mb-2">Interactive Map</h3>
-                <p className="text-muted-foreground text-sm">Navigate through floors and find departments easily</p>
-              </CardContent>
-            </Card>
-
-            <Card className="card-elevated group cursor-pointer" onClick={() => navigate("/timeline")}>
-              <CardContent className="p-6 text-center">
-                <Calendar className="w-12 h-12 text-success mx-auto mb-4 group-hover:scale-110 transition-transform" />
-                <h3 className="font-semibold text-lg mb-2">Event Timeline</h3>
-                <p className="text-muted-foreground text-sm">Stay updated with all performances and activities</p>
-              </CardContent>
-            </Card>
+      <section className="px-4">
+        <div className="max-w-md mx-auto grid grid-cols-1 gap-3">
+          <div className="glass soft rounded-2xl p-4 text-black" role="button" onClick={() => navigate('/map')}>
+            <div className="text-sm font-semibold">Interactive Map</div>
+            <div className="text-[12px] text-black/60">Navigate through floors and find departments easily</div>
+          </div>
+          <div className="glass soft rounded-2xl p-4 text-black" role="button" onClick={() => navigate('/timeline')}>
+            <div className="text-sm font-semibold">Event Timeline</div>
+            <div className="text-[12px] text-black/60">Stay updated with all performances and activities</div>
           </div>
         </div>
       </section>
 
       {/* Event Info */}
-      <section className="py-12 px-4">
-        <div className="container mx-auto text-center">
-          <Card className="card-gradient max-w-2xl mx-auto">
-            <CardHeader>
-              <CardTitle className="glow-text text-2xl">Royal Global School</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                <Calendar className="w-4 h-4" />
-                <span>August 23, 2025</span>
-              </div>
-              <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                <MapPin className="w-4 h-4" />
-                <span>Guwahati, Assam</span>
-              </div>
-              <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                <Users className="w-4 h-4" />
-                <span>Open to All Visitors</span>
-              </div>
-            </CardContent>
-          </Card>
+      <section className="px-4 pb-28">
+        <div className="max-w-md mx-auto text-center">
+          <div className="glass soft rounded-2xl p-4 text-black">
+            <div className="text-lg font-semibold">Royal Global School</div>
+            <div className="mt-2 flex flex-col items-center gap-1 text-[13px] text-black/70">
+              <div className="flex items-center gap-2"><Calendar className="w-4 h-4" /><span>August 23, 2025</span></div>
+              <div className="flex items-center gap-2"><MapPin className="w-4 h-4" /><span>Guwahati, Assam</span></div>
+              <div className="flex items-center gap-2"><Users className="w-4 h-4" /><span>Open to All Visitors</span></div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

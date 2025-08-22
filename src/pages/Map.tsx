@@ -1,20 +1,16 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import MapView from '@/components/MapView';
 import Navigation from '@/components/navigation';
 
 const Map = () => {
-  const navigate = useNavigate();
   const [floor, setFloor] = useState<'ground'|'first'>('ground');
   const img = floor==='ground' ? '/groundfloor map.png' : '/first floor map.png';
 
-  const handleNavigate = (path: string) => {
-    navigate(path);
-  };
+
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation currentPath="/map" onNavigate={handleNavigate} />
+      <Navigation />
       
       <main className="p-3 space-y-3">
         <div className="bg-muted rounded-full p-1 inline-flex">

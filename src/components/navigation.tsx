@@ -1,14 +1,19 @@
 import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Home, BookOpen, Clock, Map, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import logoImage from "@/assets/logo.png";
 
 interface NavigationProps {
-  currentPath: string;
-  onNavigate: (path: string) => void;
+  currentPath?: string;
+  onNavigate?: (path: string) => void;
 }
 
-export default function Navigation({ currentPath, onNavigate }: NavigationProps) {
+export default function Navigation({ currentPath: propCurrentPath, onNavigate }: NavigationProps) {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const currentPath = propCurrentPath || location.pathname;
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
@@ -19,14 +24,22 @@ export default function Navigation({ currentPath, onNavigate }: NavigationProps)
   ];
 
   const handleNavigate = (path: string) => {
-    onNavigate(path);
+    if (onNavigate) {
+      onNavigate(path);
+    } else {
+      navigate(path);
+    }
     setIsOpen(false);
+  };
+
+  const handleLogoClick = () => {
+    handleNavigate("/");
   };
 
   return (
     <>
       {/* Mobile Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-border/20 shadow-elegant z-50 lg:hidden">
+      <div className="dock glass soft rounded-2xl text-black max-w-md mx-auto left-4 right-4 z-50 lg:hidden">
         <div className="flex items-center justify-around p-2">
           {navItems.map(({ path, label, icon: Icon }) => (
             <Button
@@ -49,10 +62,11 @@ export default function Navigation({ currentPath, onNavigate }: NavigationProps)
       {/* Desktop Navigation Header */}
       <header className="hidden lg:block fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-border/20 shadow-elegant z-50">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">T</span>
-            </div>
+          <div 
+            className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity"
+            onClick={handleLogoClick}
+          >
+            <img src={logoImage} alt="Triveni Logo" className="w-8 h-8 rounded-lg object-contain" />
             <div>
               <h1 className="font-bold text-xl text-foreground">Triveni</h1>
               <p className="text-xs text-muted-foreground">School Exhibition</p>
@@ -81,10 +95,11 @@ export default function Navigation({ currentPath, onNavigate }: NavigationProps)
       {/* Mobile Header */}
       <header className="lg:hidden fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-border/20 shadow-elegant z-50">
         <div className="flex items-center justify-between p-4">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">T</span>
-            </div>
+          <div 
+            className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity"
+            onClick={handleLogoClick}
+          >
+            <img src={logoImage} alt="Triveni Logo" className="w-8 h-8 rounded-lg object-contain" />
             <div>
               <h1 className="font-bold text-lg text-foreground">Triveni</h1>
               <p className="text-xs text-muted-foreground">School Exhibition</p>

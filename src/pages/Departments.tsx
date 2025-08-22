@@ -60,9 +60,7 @@ const Departments = () => {
     setFilteredDepartments(filtered);
   }, [searchQuery, selectedFilter, departments]);
 
-  const handleNavigate = (path: string) => {
-    navigate(path);
-  };
+
 
   const handleDepartmentClick = (id: string) => {
     navigate(`/departments/${id}`);
@@ -79,7 +77,7 @@ const Departments = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation currentPath="/departments" onNavigate={handleNavigate} />
+      <Navigation />
       
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
