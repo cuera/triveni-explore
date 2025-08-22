@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import MapView from '@/components/MapView';
 import Navigation from '@/components/navigation';
+import groundFloorMap from '@/assets/revised ground floor.png';
+import firstFloorMap from '@/assets/revised 1st floor.png';
 
 const Map = () => {
   const [floor, setFloor] = useState<'ground'|'first'>('ground');
-  const img = floor==='ground' ? '/revised ground floor.png' : '/revised 1st floor.png';
+  const img = floor==='ground' ? groundFloorMap : firstFloorMap;
 
   return (
     <div className="min-h-screen bg-background">
