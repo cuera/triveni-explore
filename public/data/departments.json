@@ -601,5 +601,56 @@
     ],
     "theme": "Physical Excellence",
     "description": "Showcase sporting skills and physical activities in an interactive environment with archery, golf, and badminton demonstrations."
+  },
+  {
+    "id": "commerce_warehousing_retail",
+    "name": "Commerce - Warehousing & Retail",
+    "teacher": "Bala Meenakshi Rajkhowa",
+    "room": "6A, 6B",
+    "floor": "B Block 1st Floor",
+    "classes": "11-12",
+    "activities": [
+      "Warehousing Retail",
+      "Spin Launcher",
+      "Upcoming Industries",
+      "Smart City",
+      "Operation Sindoor",
+      "Stock Market",
+      "Women Entrepreneurs",
+      "Product Life Cycle"
+    ],
+    "theme": "Business Operations & Entrepreneurship",
+    "description": "Explore modern business operations, retail strategies, and entrepreneurship through interactive simulations and real-world scenarios."
+  },
+  {
+    "id": "computer_science_haunted_house",
+    "name": "Computer Science - Haunted House & Games",
+    "teacher": "Tarak Karmkr, Neha Sahu, Krishna Maan, Santanu Saikia",
+    "room": "3D Lab, 8D",
+    "floor": "B Block 1st Floor",
+    "classes": "9-12",
+    "activities": [
+      "Haunted House (Interactive)",
+      "Game Zone"
+    ],
+    "theme": "Interactive Gaming & Technology",
+    "description": "Experience cutting-edge interactive technology through immersive haunted house simulations and engaging game zones."
+  },
+  {
+    "id": "hindi_conversation_poetry",
+    "name": "Hindi - Conversation & Poetry",
+    "teacher": "Uday Shankar, Gitanjali Goswami, Gitarthi Goswami",
+    "room": "Maths Lab (1st Floor)",
+    "floor": "A Block 1st Floor",
+    "classes": "6-12",
+    "activities": [
+      "संभाषण (Conversation)",
+      "हास्य कविता (Humour Poetry)",
+      "उन्मुक्त कारागार (Open Prison)",
+      "वर्णमाला चार्ट (Alphabet Chart)",
+      "मुहावरे और लोकोक्तियां चार्ट (Idioms & Proverbs Chart)"
+    ],
+    "theme": "Hindi Language & Literature",
+    "description": "Engage with Hindi language through interactive conversations, humorous poetry, and comprehensive language charts."
   }
 ]

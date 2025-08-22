@@ -69,7 +69,10 @@ export default function DepartmentCard({
       'performing_arts_kathputli': 'from-orange-500/10 to-amber-500/10',
       'visual-arts': 'from-pink-500/10 to-rose-500/10',
       'humanities': 'from-emerald-500/10 to-teal-500/10',
-      'sports': 'from-green-500/10 to-emerald-500/10'
+      'sports': 'from-green-500/10 to-emerald-500/10',
+      'commerce_warehousing_retail': 'from-yellow-500/10 to-orange-500/10',
+      'computer_science_haunted_house': 'from-indigo-500/10 to-blue-500/10',
+      'hindi_conversation_poetry': 'from-orange-500/10 to-red-500/10'
     };
     return gradients[id as keyof typeof gradients] || 'from-primary/10 to-accent/10';
   };
