@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Home, BookOpen, Clock, Map, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import logoImage from "@/assets/logo.png";
+import logoImage from "@/assets/logo.avif";
 
 interface NavigationProps {
   currentPath?: string;

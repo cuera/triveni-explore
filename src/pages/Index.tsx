@@ -8,7 +8,7 @@ import DepartmentCard from "@/components/department-card";
 import { Department, TimelineItem } from "@/types";
 import { Calendar, MapPin, Users, Clock, ArrowRight, Sparkles, BookOpen } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import heroBanner from "@/assets/herobanner.png";
+import heroBanner from "@/assets/hero1.avif";
 
 const Index = () => {
   const navigate = useNavigate();
