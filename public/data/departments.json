@@ -226,5 +226,380 @@
     "qr": "cs",
     "theme": "Digital Innovation",
     "description": "Explore the world of programming and computer science through hands-on activities."
+  },
+  {
+    "id": "science_climate_health",
+    "name": "Science - Climate Change & Health",
+    "teacher": "Punam Agarwal, Gitanjali Kalita Sarma, Dr Kiran Gogoi",
+    "room": "3A, 3B, 3C, 3D",
+    "floor": "B Block 1st Floor",
+    "classes": "6-8",
+    "activities": [
+      "Climate Change Models (25 models)",
+      "Human Health Models (10 models)"
+    ],
+    "theme": "Environmental Science & Health",
+    "description": "Explore climate change solutions and human health through interactive models and demonstrations."
+  },
+  {
+    "id": "science_physics_space",
+    "name": "Science - Physics & Space Exploration",
+    "teacher": "Dr. Mridusmita Datta, Upasana Chowdhury, Gautam K Deka, Dr. Utpal Saha",
+    "room": "8A, 8B, Language Room",
+    "floor": "B Block 1st Floor",
+    "classes": "9-12",
+    "activities": [
+      "Newton's Cradle",
+      "Colonising Mars (Future ahead)",
+      "International Space Station",
+      "The Tunnel Effect",
+      "Application of Sound Wave",
+      "Pedal Power: Bicycle Generator"
+    ],
+    "theme": "Physics & Space Technology",
+    "description": "Discover advanced physics concepts and space exploration technologies through hands-on demonstrations."
+  },
+  {
+    "id": "science_gifts_green",
+    "name": "Science - Gifts from Green",
+    "teacher": "Banashree Neog Baruah",
+    "room": "EY-2",
+    "floor": "Ground Floor",
+    "classes": "All",
+    "activities": [
+      "Gifts from Green"
+    ],
+    "theme": "Environmental Sustainability",
+    "description": "Explore sustainable solutions and green technologies for a better future."
+  },
+  {
+    "id": "science_water_sustainability",
+    "name": "Science - Water & Sustainability",
+    "teacher": "Jhumur Gupta",
+    "room": "1C",
+    "floor": "A Block 1st Floor",
+    "classes": "All",
+    "activities": [
+      "Water Filtration System",
+      "Hydroponic Garden",
+      "Rainwater Harvesting",
+      "Wind Turbine",
+      "Sustainable Transportation Survey",
+      "Solar Powered Model Car"
+    ],
+    "theme": "Water Conservation & Renewable Energy",
+    "description": "Learn about water conservation, renewable energy, and sustainable living practices."
+  },
+  {
+    "id": "science_treasure_trash",
+    "name": "Science - Treasure from Trash",
+    "teacher": "Aparna Das",
+    "room": "Activity Room",
+    "floor": "Ground Floor",
+    "classes": "All",
+    "activities": [
+      "Treasure from Trash",
+      "Be Safe Station"
+    ],
+    "theme": "Waste Management & Safety",
+    "description": "Transform waste into valuable resources and learn about safety practices."
+  },
+  {
+    "id": "mathematics_advanced",
+    "name": "Mathematics - Advanced Concepts",
+    "teacher": "Subrata Goswami, Akhil Goswami, Debajit Paul, Nikhil Ladha",
+    "room": "7A, 7C, 8A",
+    "floor": "B Block 1st Floor",
+    "classes": "9-12",
+    "activities": [
+      "Pythagoras Theorem Applications",
+      "Fibonacci Sequence in Nature",
+      "Know Your Birthday",
+      "6-Card Cipher",
+      "Tower of Hanoi",
+      "Fractal Geometry",
+      "Co-ordinate City",
+      "GPS Technology",
+      "Commercial Mathematics",
+      "Permutation and Combination",
+      "Application of Probability",
+      "3-Dimensional Shapes"
+    ],
+    "theme": "Advanced Mathematical Concepts",
+    "description": "Explore advanced mathematical concepts through interactive demonstrations and real-world applications."
+  },
+  {
+    "id": "mathematics_number_family",
+    "name": "Mathematics - Number Fact Family",
+    "teacher": "Jenny Rohlupui",
+    "room": "EY-2",
+    "floor": "Ground Floor",
+    "classes": "All",
+    "activities": [
+      "Number Fact Family",
+      "Make it 3D Solid"
+    ],
+    "theme": "Number Sense & 3D Geometry",
+    "description": "Develop number sense and explore 3D geometry through hands-on activities."
+  },
+  {
+    "id": "mathematics_yog",
+    "name": "Mathematics - Yog Integration",
+    "teacher": "Jayeshkumar I Gosai",
+    "room": "7A, 7C, 8A",
+    "floor": "B Block 1st Floor",
+    "classes": "9-12",
+    "activities": [
+      "Integration of Mathematics with Yog"
+    ],
+    "theme": "Mathematics & Wellness",
+    "description": "Discover the fascinating connection between mathematics and yoga practices."
+  },
+  {
+    "id": "mathematics_basic_operations",
+    "name": "Mathematics - Basic Operations",
+    "teacher": "Geetha, Doli, Neelam",
+    "room": "1B",
+    "floor": "A Block 1st Floor",
+    "classes": "6-8",
+    "activities": [
+      "HCF and LCM",
+      "Multiples and Fractions",
+      "Angles",
+      "Division Game",
+      "Geometrical Shapes"
+    ],
+    "theme": "Basic Mathematical Operations",
+    "description": "Master fundamental mathematical operations through interactive games and activities."
+  },
+  {
+    "id": "mathematics_build_shapes",
+    "name": "Mathematics - Build with Shapes",
+    "teacher": "Ganga Basumatary",
+    "room": "Activity Room",
+    "floor": "Ground Floor",
+    "classes": "All",
+    "activities": [
+      "Build with Shapes"
+    ],
+    "theme": "Geometric Construction",
+    "description": "Explore geometry through hands-on shape building activities."
+  },
+  {
+    "id": "english_puppet_snc",
+    "name": "English - Puppet Plaza",
+    "teacher": "Nabanita Baruah",
+    "room": "Room adjacent to SNC",
+    "floor": "Ground Floor",
+    "classes": "All",
+    "activities": [
+      "Puppet Plaza"
+    ],
+    "theme": "Storytelling & Puppetry",
+    "description": "Experience the magic of storytelling through interactive puppet shows."
+  },
+  {
+    "id": "english_puppet_special",
+    "name": "English - Puppet Plaza (Special Education)",
+    "teacher": "Sanjukta Borah",
+    "room": "Special Education Room",
+    "floor": "Ground Floor",
+    "classes": "All",
+    "activities": [
+      "Puppet Plaza"
+    ],
+    "theme": "Inclusive Storytelling",
+    "description": "Inclusive storytelling and puppetry for all students."
+  },
+  {
+    "id": "english_language_arts",
+    "name": "English - Language Arts",
+    "teacher": "Nayana Das, Sehanara Rahman, Nabanita Baruah",
+    "room": "2B",
+    "floor": "A Block 1st Floor",
+    "classes": "6-12",
+    "activities": [
+      "Parts of Speech",
+      "Puppet Show",
+      "Author's Corner"
+    ],
+    "theme": "Language Arts & Literature",
+    "description": "Explore language arts through interactive grammar activities and literary presentations."
+  },
+  {
+    "id": "english_slam_poetry",
+    "name": "English - Slam Poetry",
+    "teacher": "Rumi Bora, Himadri Saikia",
+    "room": "A Block",
+    "floor": "A Block 1st Floor",
+    "classes": "6-12",
+    "activities": [
+      "Slam Poetry Free Verse",
+      "Author Impersonation"
+    ],
+    "theme": "Poetry & Performance",
+    "description": "Express yourself through powerful slam poetry and creative author impersonations."
+  },
+  {
+    "id": "english_storyteller",
+    "name": "English - Storyteller's Lounge",
+    "teacher": "Lesley Morris Momin",
+    "room": "Library",
+    "floor": "Library",
+    "classes": "All",
+    "activities": [
+      "The Storyteller's Lounge"
+    ],
+    "theme": "Storytelling & Literature",
+    "description": "Immerse yourself in the world of stories and literature in our cozy storyteller's lounge."
+  },
+  {
+    "id": "social_science_harappa",
+    "name": "Social Science - Harappa Civilization",
+    "teacher": "Saptaparna Choudhury, Neha Sayal",
+    "room": "2A",
+    "floor": "A Block 1st Floor",
+    "classes": "6-8",
+    "activities": [
+      "Harappa Speaks in Whispers - A Mystery Through Ages"
+    ],
+    "theme": "Ancient Civilizations",
+    "description": "Unravel the mysteries of the ancient Harappa civilization through interactive exhibits."
+  },
+  {
+    "id": "social_science_ahom",
+    "name": "Social Science - Ahom Dynasty",
+    "teacher": "Mousumi Bhattacharjee, Mahua Kanungoe",
+    "room": "6C",
+    "floor": "B Block 1st Floor",
+    "classes": "9-10",
+    "activities": [
+      "Crowns and Chronicles - The Sagas of the Ahoms"
+    ],
+    "theme": "Regional History",
+    "description": "Explore the rich history and legacy of the mighty Ahom Dynasty."
+  },
+  {
+    "id": "social_science_ancient_india",
+    "name": "Social Science - Ancient India",
+    "teacher": "Tanima Das Chatterjee, Danmati Subba",
+    "room": "1A",
+    "floor": "A Block 1st Floor",
+    "classes": "6-8",
+    "activities": [
+      "Landforms",
+      "Life of Early Humans",
+      "Indian Heritage",
+      "Egyptian Civilization",
+      "Smart City"
+    ],
+    "theme": "Ancient History & Geography",
+    "description": "Journey through ancient India and early human civilizations."
+  },
+  {
+    "id": "third_language_french",
+    "name": "3rd Language - French Culture",
+    "teacher": "Debapratim Bharali",
+    "room": "French Language Lab",
+    "floor": "B Block 1st Floor",
+    "classes": "6-12",
+    "activities": [
+      "The Culture and Monuments of France"
+    ],
+    "theme": "French Culture & Heritage",
+    "description": "Immerse yourself in French culture and explore famous monuments."
+  },
+  {
+    "id": "third_language_assamese_theme",
+    "name": "3rd Language - Assamese Theme",
+    "teacher": "Bhumika Nath",
+    "room": "8B",
+    "floor": "B Block 1st Floor",
+    "classes": "6-12",
+    "activities": [
+      "বাৰে ৰহণীয়া অসম (Assamese Theme)"
+    ],
+    "theme": "Assamese Culture",
+    "description": "Celebrate the beauty and richness of Assamese culture and traditions."
+  },
+  {
+    "id": "third_language_rupahi",
+    "name": "3rd Language - Rupahi Asami",
+    "teacher": "Deepa Choudhury",
+    "room": "6D",
+    "floor": "B Block 1st Floor",
+    "classes": "6-12",
+    "activities": [
+      "Rupahi Asami (Assamese Showcase)"
+    ],
+    "theme": "Assamese Showcase",
+    "description": "Experience the vibrant showcase of Assamese culture and traditions."
+  },
+  {
+    "id": "performing_arts_garage_band",
+    "name": "Performing Arts - Garage Band",
+    "teacher": "Susanta Chowdhury",
+    "room": "B-Block Corner (Near Shikha Mam's Room)",
+    "floor": "B Block",
+    "classes": "All",
+    "activities": [
+      "Garage Band Music Corner"
+    ],
+    "theme": "Contemporary Music",
+    "description": "Rock out with live garage band performances and music demonstrations."
+  },
+  {
+    "id": "performing_arts_kathputli",
+    "name": "Performing Arts - Kathputli",
+    "teacher": "Sanjib Nandy",
+    "room": "B Block",
+    "floor": "B Block",
+    "classes": "All",
+    "activities": [
+      "Kathputli - The Lost Art Form"
+    ],
+    "theme": "Traditional Puppetry",
+    "description": "Revive the ancient art of Kathputli puppetry and traditional performances."
+  },
+  {
+    "id": "visual-arts",
+    "name": "Visual Arts",
+    "teacher": "Ms. Tulirekha Deb",
+    "room": "C Block",
+    "floor": "C Block",
+    "classes": "All",
+    "activities": [
+      "Painting Exhibition cum sale items"
+    ],
+    "theme": "Creative Expressions",
+    "description": "Showcase artistic talent through beautiful paintings and creative displays available for purchase."
+  },
+  {
+    "id": "humanities",
+    "name": "Humanities",
+    "teacher": "Ms. Pooja Bhattacharjee",
+    "room": "7B",
+    "floor": "B Block 1st Floor",
+    "classes": "11-12",
+    "activities": [
+      "Lines That Divide, Memories That Unite"
+    ],
+    "theme": "Social Studies & History",
+    "description": "Explore human experiences and social dynamics through thought-provoking exhibits on division and unity."
+  },
+  {
+    "id": "sports",
+    "name": "Sports",
+    "teacher": "Mr. Ganesh Rohang, Mr. Rishiraj Das, Mr. Shimanta Das",
+    "room": "Basement",
+    "floor": "Basement",
+    "classes": "All",
+    "activities": [
+      "Archery",
+      "Golf",
+      "Badminton/Shoot Out"
+    ],
+    "theme": "Physical Excellence",
+    "description": "Showcase sporting skills and physical activities in an interactive environment with archery, golf, and badminton demonstrations."
   }
 ]

@@ -47,7 +47,7 @@ const Index = () => {
 
 
 
-  const featuredDepartments = departments.slice(0, 6);
+  const featuredDepartments = departments.slice(0, 15);
 
   return (
     <div className="min-h-screen bg-background">

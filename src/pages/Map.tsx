@@ -4,9 +4,7 @@ import Navigation from '@/components/navigation';
 
 const Map = () => {
   const [floor, setFloor] = useState<'ground'|'first'>('ground');
-  const img = floor==='ground' ? '/groundfloor map.png' : '/first floor map.png';
-
-
+  const img = floor==='ground' ? '/revised ground floor.png' : '/revised 1st floor.png';
 
   return (
     <div className="min-h-screen bg-background">

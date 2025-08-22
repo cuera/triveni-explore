@@ -42,7 +42,34 @@ export default function DepartmentCard({
       'art': 'from-pink-500/10 to-rose-500/10',
       'social_science_6_8': 'from-amber-500/10 to-orange-500/10',
       'social_science_9_10': 'from-teal-500/10 to-cyan-500/10',
-      'social_science_11_12': 'from-red-500/10 to-pink-500/10'
+      'social_science_11_12': 'from-red-500/10 to-pink-500/10',
+      // New department gradients
+      'science_climate_health': 'from-green-500/10 to-emerald-500/10',
+      'science_physics_space': 'from-blue-600/10 to-purple-600/10',
+      'science_gifts_green': 'from-green-500/10 to-teal-500/10',
+      'science_water_sustainability': 'from-blue-500/10 to-cyan-500/10',
+      'science_treasure_trash': 'from-yellow-500/10 to-orange-500/10',
+      'mathematics_advanced': 'from-indigo-500/10 to-purple-500/10',
+      'mathematics_number_family': 'from-green-500/10 to-emerald-500/10',
+      'mathematics_yog': 'from-purple-500/10 to-pink-500/10',
+      'mathematics_basic_operations': 'from-blue-500/10 to-cyan-500/10',
+      'mathematics_build_shapes': 'from-orange-500/10 to-red-500/10',
+      'english_puppet_snc': 'from-purple-500/10 to-pink-500/10',
+      'english_puppet_special': 'from-purple-500/10 to-pink-500/10',
+      'english_language_arts': 'from-blue-500/10 to-indigo-500/10',
+      'english_slam_poetry': 'from-red-500/10 to-pink-500/10',
+      'english_storyteller': 'from-amber-500/10 to-orange-500/10',
+      'social_science_harappa': 'from-amber-500/10 to-orange-500/10',
+      'social_science_ahom': 'from-teal-500/10 to-cyan-500/10',
+      'social_science_ancient_india': 'from-red-500/10 to-pink-500/10',
+      'third_language_french': 'from-blue-500/10 to-cyan-500/10',
+      'third_language_assamese_theme': 'from-green-500/10 to-emerald-500/10',
+      'third_language_rupahi': 'from-orange-500/10 to-red-500/10',
+      'performing_arts_garage_band': 'from-purple-500/10 to-indigo-500/10',
+      'performing_arts_kathputli': 'from-orange-500/10 to-amber-500/10',
+      'visual-arts': 'from-pink-500/10 to-rose-500/10',
+      'humanities': 'from-emerald-500/10 to-teal-500/10',
+      'sports': 'from-green-500/10 to-emerald-500/10'
     };
     return gradients[id as keyof typeof gradients] || 'from-primary/10 to-accent/10';
   };
