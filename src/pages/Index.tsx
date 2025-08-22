@@ -72,26 +72,27 @@ const Index = () => {
                 The Ultimate School Exhibition Experience at Royal Global School
               </p>
 
-              <div className="w-full max-w-sm mb-4"><SearchBox onSelect={handleSearch} /></div>
-
-              <div className="flex gap-2">
-                <Button 
-                  size="lg" 
-                  className="glass pill text-black border border-black/10 hover:bg-white/90"
-                  onClick={() => navigate("/departments")}
-                >
-                  <BookOpen className="mr-2 h-5 w-5" />
-                  Explore Departments
-                </Button>
-                <Button 
-                  size="lg" 
-                  className="pill bg-black text-white hover:bg-black/90"
-                  onClick={() => navigate("/timeline")}
-                >
-                  <Clock className="mr-2 h-5 w-5" />
-                  View Schedule
-                </Button>
-              </div>
+              <div className="w-full max-w-sm mb-6"><SearchBox onSelect={handleSearch} /></div>
+            </div>
+            
+            {/* Floating Buttons */}
+            <div className="absolute bottom-4 left-4 right-4 flex gap-2 justify-center">
+              <Button 
+                size="sm"
+                className="glass pill text-black border border-black/10 hover:bg-white/90 shadow-lg backdrop-blur-sm"
+                onClick={() => navigate("/departments")}
+              >
+                <BookOpen className="mr-1.5 h-4 w-4" />
+                Explore Departments
+              </Button>
+              <Button 
+                size="sm"
+                className="pill bg-black text-white hover:bg-black/90 shadow-lg"
+                onClick={() => navigate("/timeline")}
+              >
+                <Clock className="mr-1.5 h-4 w-4" />
+                View Schedule
+              </Button>
             </div>
           </div>
         </section>
