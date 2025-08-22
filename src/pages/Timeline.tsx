@@ -11,8 +11,6 @@ import { Clock, Calendar, MapPin } from "lucide-react";
 const Timeline = () => {
   const navigate = useNavigate();
   const [timeline, setTimeline] = useState<TimelineItemType[]>([]);
-  const [currentTime, setCurrentTime] = useState("");
-
   useEffect(() => {
     fetch('/data/timeline.json')
       .then(res => res.json())
@@ -20,16 +18,6 @@ const Timeline = () => {
         setTimeline(data);
       })
       .catch(err => console.error('Failed to load timeline:', err));
-
-    // Update current time every minute
-    const updateTime = () => {
-      const now = new Date();
-      setCurrentTime(`${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`);
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 60000);
-    return () => clearInterval(interval);
   }, []);
 
 
@@ -41,23 +29,22 @@ const Timeline = () => {
   };
 
   const isEventActive = (event: TimelineItemType) => {
-    const eventIndex = timeline.indexOf(event);
-    const nextEvent = timeline[eventIndex + 1];
-    return event.time <= currentTime && (!nextEvent || nextEvent.time > currentTime);
+    // First event is always active
+    return event === timeline[0];
   };
 
   const isEventPast = (event: TimelineItemType) => {
-    const eventIndex = timeline.indexOf(event);
-    const nextEvent = timeline[eventIndex + 1];
-    return nextEvent && nextEvent.time <= currentTime;
+    // No events are past since we removed time logic
+    return false;
   };
 
 
 
 
 
-  const currentEvent = timeline.find(event => isEventActive(event));
-  const nextEvent = timeline.find(event => event.time > currentTime);
+  // Show first two events as featured
+  const currentEvent = timeline[0];
+  const nextEvent = timeline[1];
 
   return (
     <div className="min-h-screen bg-background">
@@ -98,7 +85,7 @@ const Timeline = () => {
               <CardHeader className="pb-3">
                 <CardTitle className="flex items-center gap-2 text-primary">
                   <Clock className="w-4 h-4" />
-                  Coming Up Next
+                  Featured Event
                 </CardTitle>
               </CardHeader>
               <CardContent>

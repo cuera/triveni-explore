@@ -28,11 +28,8 @@ const Index = () => {
       .then(res => res.json())
       .then(data => {
         setTimeline(data);
-        // Find next event
-        const now = new Date();
-        const currentTime = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
-        const upcoming = data.find((event: TimelineItem) => event.time > currentTime);
-        setNextEvent(upcoming || data[0]);
+        // Show featured event
+        setNextEvent(data[0]);
       })
       .catch(err => console.error('Failed to load timeline:', err));
   }, []);
@@ -91,7 +88,7 @@ const Index = () => {
                 onClick={() => navigate("/timeline")}
               >
                 <Clock className="mr-1.5 h-4 w-4" />
-                View Schedule
+                View Events
               </Button>
             </div>
           </div>
@@ -126,11 +123,11 @@ const Index = () => {
               <div className="flex items-center gap-3">
                 <span className="w-3 h-3 rounded-full bg-emerald-500" />
                 <div className="flex-1">
-                  <div className="text-xs text-black/60">Coming Up Next</div>
+                  <div className="text-xs text-black/60">Featured Event</div>
                   <div className="text-sm font-medium">{nextEvent.event}</div>
-                  <div className="text-[12px] text-black/60">{nextEvent.time} • {nextEvent.location}</div>
+                  <div className="text-[12px] text-black/60">{nextEvent.location}</div>
                 </div>
-                <Button onClick={() => navigate('/timeline')} className="pill bg-black text-white text-xs px-3 py-2">Full Schedule</Button>
+                <Button onClick={() => navigate('/timeline')} className="pill bg-black text-white text-xs px-3 py-2">View Events</Button>
               </div>
             </div>
           </section>

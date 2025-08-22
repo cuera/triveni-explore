@@ -1,10 +1,10 @@
 [
   {
     "time": "09:30",
-    "event": "Exhibition Opening",
+    "event": "Triveni - The Royal Exhibition Opening",
     "location": "Main Entrance",
     "type": "ceremony",
-    "description": "Welcome to Triveni - The School Exhibition"
+    "description": "Welcome to Triveni - The Ultimate School Exhibition Experience"
   },
   {
     "time": "09:45",
@@ -102,9 +102,9 @@
   },
   {
     "time": "16:00",
-    "event": "Closing Ceremony",
+    "event": "Triveni - The Royal Exhibition",
     "location": "Main Hall",
     "type": "ceremony",
-    "description": "Thank you and closing remarks"
+    "description": "The Ultimate School Exhibition Experience"
   }
 ]
