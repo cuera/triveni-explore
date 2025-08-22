@@ -6,21 +6,18 @@ import { Badge } from "@/components/ui/badge";
 import Navigation from "@/components/navigation";
 import TimelineItem from "@/components/timeline-item";
 import { TimelineItem as TimelineItemType } from "@/types";
-import { Clock, Calendar, MapPin, Filter, RefreshCw } from "lucide-react";
+import { Clock, Calendar, MapPin } from "lucide-react";
 
 const Timeline = () => {
   const navigate = useNavigate();
   const [timeline, setTimeline] = useState<TimelineItemType[]>([]);
-  const [filteredTimeline, setFilteredTimeline] = useState<TimelineItemType[]>([]);
   const [currentTime, setCurrentTime] = useState("");
-  const [selectedFilter, setSelectedFilter] = useState("all");
 
   useEffect(() => {
     fetch('/data/timeline.json')
       .then(res => res.json())
       .then(data => {
         setTimeline(data);
-        setFilteredTimeline(data);
       })
       .catch(err => console.error('Failed to load timeline:', err));
 
@@ -35,32 +32,7 @@ const Timeline = () => {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    let filtered = timeline;
 
-    if (selectedFilter !== "all") {
-      filtered = timeline.filter(event => {
-        switch (selectedFilter) {
-          case "now":
-            return event.time <= currentTime && timeline[timeline.indexOf(event) + 1]?.time > currentTime;
-          case "upcoming":
-            return event.time > currentTime;
-          case "past":
-            return event.time < currentTime;
-          case "performances":
-            return event.type === "performance";
-          case "demonstrations":
-            return event.type === "demonstration";
-          case "ceremonies":
-            return event.type === "ceremony";
-          default:
-            return true;
-        }
-      });
-    }
-
-    setFilteredTimeline(filtered);
-  }, [selectedFilter, timeline, currentTime]);
 
   const handleTimelineClick = (event: TimelineItemType) => {
     if (event.departmentId) {
@@ -80,15 +52,7 @@ const Timeline = () => {
     return nextEvent && nextEvent.time <= currentTime;
   };
 
-  const filters = [
-    { id: "all", label: "All Events", icon: Calendar },
-    { id: "now", label: "Happening Now", icon: Clock },
-    { id: "upcoming", label: "Upcoming", icon: RefreshCw },
-    { id: "past", label: "Past", icon: Clock },
-    { id: "performances", label: "Performances", icon: null },
-    { id: "demonstrations", label: "Demonstrations", icon: null },
-    { id: "ceremonies", label: "Ceremonies", icon: null }
-  ];
+
 
 
 
@@ -151,37 +115,12 @@ const Timeline = () => {
           )}
         </div>
 
-        {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
-          {filters.map((filter) => (
-            <Button
-              key={filter.id}
-              variant={selectedFilter === filter.id ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedFilter(filter.id)}
-              className={selectedFilter === filter.id ? "bg-primary text-primary-foreground" : ""}
-            >
-              {filter.icon && <filter.icon className="w-3 h-3 mr-1" />}
-              <Filter className="w-3 h-3 mr-1" />
-              {filter.label}
-            </Button>
-          ))}
-        </div>
 
-        {/* Results Summary */}
-        <div className="mb-6">
-          <p className="text-muted-foreground text-center">
-            Showing {filteredTimeline.length} of {timeline.length} events
-            {selectedFilter !== "all" && (
-              <span> in "{filters.find(f => f.id === selectedFilter)?.label}"</span>
-            )}
-          </p>
-        </div>
 
         {/* Timeline */}
-        {filteredTimeline.length > 0 ? (
+        {timeline.length > 0 ? (
           <div className="space-y-4 max-w-4xl mx-auto">
-            {filteredTimeline.map((event, index) => (
+            {timeline.map((event, index) => (
               <TimelineItem
                 key={index}
                 {...event}
@@ -198,11 +137,8 @@ const Timeline = () => {
             </div>
             <h3 className="text-lg font-semibold text-foreground mb-2">No events found</h3>
             <p className="text-muted-foreground mb-4">
-              Try adjusting your filter criteria
+              Loading events...
             </p>
-            <Button variant="outline" onClick={() => setSelectedFilter("all")}>
-              Show All Events
-            </Button>
           </div>
         )}
 
